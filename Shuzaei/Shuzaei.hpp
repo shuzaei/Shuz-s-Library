@@ -14,15 +14,20 @@ const ll LINF = LONG_MAX;
 const ll INF = 1LL << 60;
 const ull MAX = ULONG_MAX;
 #define mp make_pair
+#define mt make_tuple
 #define pb push_back
+#define eb emplase_back
 #define elif else if
 #define endl '\n'
 #define space ' '
 #define def inline auto
 #define func inline constexpr ll
-#define run(a) __attribute__((constructor)) def _##a()
 #define all(v) begin(v), end(v)
 #define rall(v) rbegin(v), rend(v)
+#define whole(a, v, ...)                                                       \
+    ([&](decltype((v)) w) { return (a)(begin(w), end(w), ##__VA_ARGS__); })(v)
+#define rwhole(a, v, ...)                                                      \
+    ([&](decltype((v)) w) { return (a)(rbegin(w), rend(w), ##__VA_ARGS__); })(v)
 #define input(a) scanf("%lld", &(a))
 #define print(a) printf("%lld\n", (a))
 #define fi first
@@ -83,12 +88,13 @@ template <class T> bool chmin(T &a, const T &b) {
 
 // Stream
 #define fout(n) cout << fixed << setprecision(n)
-#define fasten cin.tie(0), ios::sync_with_stdio(0)
+struct stream {
+    stream() { cin.tie(nullptr), ios::sync_with_stdio(false); }
+} stream;
 
 // Speed
-run(0) { fasten, fout(10); }
-#pragma GCC optimize("O3")
-#pragma GCC target("avx")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 
 // Math
 //#define gcd __gcd
