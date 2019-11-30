@@ -33,12 +33,11 @@ inline constexpr ll roundup(const ll a, const ll b) {
 
 inline constexpr ll mpow(ll a, ll n, const ll m = MOD) {
     ll r = 1;
-    while (n) {
-        if (n & 1) r *= a;
+    rep(i, 64) {
+        if (n & (1LL << i)) r *= a;
         chmod(r, m);
         a *= a;
         chmod(a, m);
-        n >>= 1;
     }
     return r;
 }

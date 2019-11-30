@@ -216,10 +216,9 @@ inline constexpr mi<MOD> operator""_m(ull n) { return mi<MOD>((ll) n); }
 template <ull mod = MOD>
 inline constexpr mi<mod> pow(mi<mod> m, ll n) noexcept {
     mi<mod> r = mi<mod>(1);
-    while (n) {
-        if (n & 1) r *= m;
+    rep(i, 64) {
+        if (n & (1LL << i)) r *= m;
         m *= m;
-        n >>= 1;
     }
     return r;
 }
