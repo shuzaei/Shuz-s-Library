@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 vector<ll> prime(ll n) {
     vector<ll> Prime(n + 1);

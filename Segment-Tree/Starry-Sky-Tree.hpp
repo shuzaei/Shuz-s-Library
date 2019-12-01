@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct starry_sky_tree {
     ll size;

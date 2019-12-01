@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct flow {
     struct edge {
@@ -35,7 +33,7 @@ struct flow {
     }
     ll maxFlow(ll s, ll t) {
         ll flow = 0;
-        loop() {
+        while (true) {
             fill(all(used), 0);
             ll d = dfs(s, t, INF);
             if (d == 0) return flow;

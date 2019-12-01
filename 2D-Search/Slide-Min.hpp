@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 template <class T> struct slidemin {
 #define __SIGSEGV__ "Segmentation fault: 11"

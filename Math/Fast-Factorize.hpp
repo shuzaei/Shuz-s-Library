@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct Factorize {
 #define MAXL (50000 >> 5) + 1
@@ -74,7 +72,9 @@ struct Factorize {
         int k = 0, b = 0;
         while (!(q & 1)) q >>= 1, k++;
         for (int it = 0; it < 2; it++) {
-            a = rand() % (p - 4) + 2;
+            random_device rd;
+            mt19937 mt(rd());
+            a = mt() % (p - 4) + 2;
             t = mpow2(a, q, p);
             b = (t == 1) || (t == p - 1);
             for (int i = 1; i < k && !b; i++) {

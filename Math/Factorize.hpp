@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct Factor {
     inline vector<ll> factors(ll N) {
@@ -15,7 +13,7 @@ struct Factor {
             }
         }
         if (N != 1) A.push_back(N);
-        sort(all(A));
+        sort(A.begin(), A.end());
         return A;
     }
     inline vector<ll> divisor(ll N) {
@@ -26,7 +24,7 @@ struct Factor {
                 if (i * i != N) A.push_back(N / i);
             }
         }
-        sort(all(A));
+        sort(A.begin(), A.end());
         return A;
     }
 };

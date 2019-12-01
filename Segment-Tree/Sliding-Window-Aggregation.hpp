@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 template <class T = ll> struct SWA {
     using op = function<T(T, T)>;

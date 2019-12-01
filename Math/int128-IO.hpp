@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 std::ostream &operator<<(std::ostream &dest, __int128_t value) {
     std::ostream::sentry s(dest);

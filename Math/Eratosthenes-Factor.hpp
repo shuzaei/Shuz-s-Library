@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct fact {
     ll N, A[100000], B[100000], C[100000];

@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 ll day(ll year, ll month) {
     ll d[] = {31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

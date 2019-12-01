@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 template <typename T = ll> struct Dijkstra {
     ll V;

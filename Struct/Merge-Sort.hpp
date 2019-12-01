@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct msort {
     void merge(vector<ll>::iterator left, vector<ll>::iterator mid,

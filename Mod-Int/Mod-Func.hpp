@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 inline ll inv(const ll n, const ll m = MOD) {
     ll a = n, b = m, x = 1, y = 0;

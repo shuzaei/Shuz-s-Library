@@ -1,12 +1,10 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct Miller {
-    const vector<long long> v = {2, 7, 61}; // < 4,759,123,141
+    const vector<ll> v = {2, 7, 61}; // < 4,759,123,141
     // x^k (mod m)
-    long long modpow(long long x, long long k, long long m) {
-        long long res = 1;
+    ll modpow(ll x, ll k, ll m) {
+        ll res = 1;
         while (k) {
             if (k & 1) {
                 res = res * x % m;
@@ -17,23 +15,23 @@ struct Miller {
         return res;
     }
     // check if n is prime
-    bool check(long long n) {
+    bool check(ll n) {
         if (n < 2) {
             return false;
         }
-        long long d = n - 1;
-        long long s = 0;
+        ll d = n - 1;
+        ll s = 0;
         while (d % 2 == 0) {
             d /= 2;
             s++;
         }
-        for (long long a : v) {
+        for (ll a : v) {
             if (a == n) {
                 return true;
             }
             if (modpow(a, d, n) != 1) {
                 bool ok = true;
-                for (long long r = 0; r < s; r++) {
+                for (ll r = 0; r < s; r++) {
                     if (modpow(a, d * (1LL << r), n) == n - 1) {
                         ok = false;
                         break;
@@ -51,17 +49,17 @@ struct Miller {
 struct Rho {
     mt19937 mt;
     Miller miller;
-    long long c;
+    ll c;
     Rho() { mt.seed(clock()); }
-    inline long long f(long long x, long long n) { return (x * x + c) % n; }
-    long long check(long long n) {
+    inline ll f(ll x, ll n) { return (x * x + c) % n; }
+    ll check(ll n) {
         if (n == 4) {
             return 2;
         }
         c = mt() % n;
-        long long x = mt() % n;
-        long long y = x;
-        long long d = 1;
+        ll x = mt() % n;
+        ll y = x;
+        ll d = 1;
         while (d == 1) {
             x = f(x, n);
             y = f(f(y, n), n);
@@ -72,19 +70,19 @@ struct Rho {
         }
         return d;
     }
-    vector<long long> factor(long long n) {
+    vector<ll> factor(ll n) {
         if (n <= 1) {
             return {};
         }
         if (miller.check(n)) {
             return {n};
         }
-        long long res = -1;
+        ll res = -1;
         while (res == -1) {
             res = check(n);
         }
-        vector<long long> fa = factor(res);
-        vector<long long> fb = factor(n / res);
+        vector<ll> fa = factor(res);
+        vector<ll> fb = factor(n / res);
         fa.insert(fa.end(), fb.begin(), fb.end());
         return fa;
     }

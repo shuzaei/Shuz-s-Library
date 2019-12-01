@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 template <ull mod = MOD> struct modmath {
     ll max;

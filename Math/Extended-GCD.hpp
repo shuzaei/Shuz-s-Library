@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 ll extgcd(const ll a, const ll b, ll &x, ll &y) {
     if (b == 0) {

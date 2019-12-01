@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct LinearCHT {
     using F = pair<ll, ll>;

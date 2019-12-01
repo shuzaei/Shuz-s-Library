@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 template <ull mod = MOD> struct mi {
     inline constexpr ll modulo(const ll n, const ll m) const noexcept {

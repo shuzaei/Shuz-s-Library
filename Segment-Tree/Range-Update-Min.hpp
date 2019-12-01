@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct RUMQ {
     static const ll n = 1LL << 20;

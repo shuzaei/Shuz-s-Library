@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct Miller {
     const vector<long long> v = {2, 7, 61}; // < 4,759,123,141

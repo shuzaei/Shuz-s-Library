@@ -1,6 +1,4 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
 struct BellmanFord {
     struct edge {
@@ -15,9 +13,9 @@ struct BellmanFord {
     BellmanFord(ll n) : N(n), G(n), dist(n), from(n), error_loop(n) {}
     void setDist(ll from, ll to, ll cost) { G[from].push_back(edge(to, cost)); }
     void culc(ll start = 0) {
-        fill(all(dist), INF);
-        fill(all(from), -1);
-        fill(all(error_loop), false);
+        fill(dist.begin(), dist.end(), INF);
+        fill(from.begin(), from.end(), -1);
+        fill(error_loop.begin(), error_loop.end(), false);
         dist[start] = 0;
         rep(i, N - 1) rep(j, N) rep(k, G[j].size()) {
             ll to = G[j][k].to;

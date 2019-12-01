@@ -1,11 +1,9 @@
-#ifndef def
 #include "Shuzaei.hpp"
-#endif
 
-struct PQueue { // max
+struct Heap { // max
     vector<ll> heap;
     ll size = 0;
-    PQueue(ll N) : heap(N) {}
+    Heap(ll N) : heap(N) {}
     void push(ll x) {
         ll i = size++;
         while (i > 0) {
