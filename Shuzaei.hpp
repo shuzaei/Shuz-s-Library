@@ -5,6 +5,9 @@ using namespace std;
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
+template <class T> using pvector = vector<pair<T, T>>;
+template <class T>
+using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
 constexpr const ll dx[4] = {1, 0, -1, 0};
 constexpr const ll dy[4] = {0, 1, 0, -1};
 constexpr const ll MOD = 1e9 + 7;
@@ -22,10 +25,6 @@ constexpr const char sp = ' ';
     ([&](decltype((v)) w) { return (a)(begin(w), end(w), ##__VA_ARGS__); })(v)
 #define fi first
 #define se second
-template <class T> using vvector = vector<vector<T>>;
-template <class T> using pvector = vector<pair<T, T>>;
-template <class T>
-using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
 
 template <class T> bool chmax(T &a, const T &b) {
     if (a < b) {
