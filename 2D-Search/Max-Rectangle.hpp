@@ -20,20 +20,20 @@ struct max_rectangle {
         deque<pair<ll, ll>> deq;
         histgram.push_back(0);
         rep(i, histgram.size() + 1) {
-            if (deq.empty() || deq.back().fi < histgram[i]) {
+            if (deq.empty() || deq.back().first < histgram[i]) {
                 deq.push_back({histgram[i], i});
-            } else if (deq.back().fi == histgram[i]) {
+            } else if (deq.back().first == histgram[i]) {
                 continue;
             } else {
                 ll last = -1;
-                while (deq.size() && deq.back().fi > histgram[i]) {
-                    ll sum = (i - deq.back().se) * deq.back().fi;
+                while (deq.size() && deq.back().first > histgram[i]) {
+                    ll sum = (i - deq.back().second) * deq.back().first;
                     if (surface <= sum) {
                         surface = sum;
-                        pos_l = deq.back().se;
+                        pos_l = deq.back().second;
                         pos_r = i + 1;
                     }
-                    last = deq.back().se;
+                    last = deq.back().second;
                     deq.pop_back();
                 }
                 if (last != -1) deq.push_back({histgram[i], last});
