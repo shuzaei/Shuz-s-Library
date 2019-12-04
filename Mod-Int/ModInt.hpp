@@ -153,22 +153,22 @@ template <ull mod = MOD> struct mi {
         num = modulo(num * (ll) inv(m), mod);
         return *this;
     }
-    inline constexpr mi<mod> operator==(const int n) const noexcept {
+    inline constexpr bool operator==(const int n) const noexcept {
         return num == modulo(n, mod);
     }
-    inline constexpr mi<mod> operator==(const ll n) const noexcept {
+    inline constexpr bool operator==(const ll n) const noexcept {
         return num == modulo(n, mod);
     }
-    inline constexpr mi<mod> operator==(const mi<mod> m) const noexcept {
+    inline constexpr bool operator==(const mi<mod> m) const noexcept {
         return num == m.num;
     }
-    inline constexpr mi<mod> operator!=(const int n) const noexcept {
+    inline constexpr bool operator!=(const int n) const noexcept {
         return num != modulo(n, mod);
     }
-    inline constexpr mi<mod> operator!=(const ll n) const noexcept {
+    inline constexpr bool operator!=(const ll n) const noexcept {
         return num != modulo(n, mod);
     }
-    inline constexpr mi<mod> operator!=(const mi<mod> m) const noexcept {
+    inline constexpr bool operator!=(const mi<mod> m) const noexcept {
         return num != m.num;
     }
     constexpr operator int() const noexcept { return num; }
