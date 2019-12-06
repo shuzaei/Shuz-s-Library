@@ -19,7 +19,7 @@ constexpr const char sp = ' ';
 #define mp make_pair
 #define mt make_tuple
 #define pb push_back
-#define eb emplase_back
+#define eb emplace_back
 #define elif else if
 #define all(a, v, ...)                                                         \
     ([&](decltype((v)) w) { return (a)(begin(w), end(w), ##__VA_ARGS__); })(v)
