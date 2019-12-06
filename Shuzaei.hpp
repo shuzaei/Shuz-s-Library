@@ -52,8 +52,8 @@ template <class T> bool chmin(T &a, const T &b) {
 #define dump(a, h, w)                                                          \
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
-        rep(__i, h) {                                                          \
-            rep(__j, w) cerr << a[__i][__j] << sp;                             \
+        rep(i, h) {                                                            \
+            rep(j, w) cerr << a[i][j] << sp;                                   \
             cerr << rt;                                                        \
         }                                                                      \
         cerr << "]" << rt;                                                     \
@@ -62,8 +62,8 @@ template <class T> bool chmin(T &a, const T &b) {
 #define vdump(a, n)                                                            \
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [";                              \
-        rep(__i, n) if (__i) cerr << sp << a[__i];                             \
-        else cerr << a[__i];                                                   \
+        rep(i, n) if (i) cerr << sp << a[i];                                   \
+        else cerr << a[i];                                                     \
         cerr << "]" << rt;                                                     \
     }
 
