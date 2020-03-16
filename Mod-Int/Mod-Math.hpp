@@ -21,11 +21,11 @@ template <ull mod = MOD> struct modmath {
         return fac[n];
     }
     inline mi<mod> perm(ll n, ll r) {
-        if (r < 0 || n < r) return mi<mod>(0);
+        if (r < 0 || n < r || n < 0) return mi<mod>(0);
         return fac[n] * inv[n - r];
     }
     inline mi<mod> comb(ll n, ll r) {
-        if (r < 0 || n < r) return mi<mod>(0);
+        if (r < 0 || n < r || n < 0) return mi<mod>(0);
         return fac[n] * inv[r] * inv[n - r];
     }
     inline mi<mod> nHr(ll n, ll r) { return comb(n + r - 1, n - 1); }
