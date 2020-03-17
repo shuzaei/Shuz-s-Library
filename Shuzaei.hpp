@@ -23,6 +23,8 @@ constexpr const char sp = ' ';
 #define elif else if
 #define all(a, v, ...)                                                         \
     ([&](decltype((v)) w) { return (a)(begin(w), end(w), ##__VA_ARGS__); })(v)
+#define rall(a, v, ...)                                                        \
+    ([&](decltype((v)) w) { return (a)(rbegin(w), rend(w), ##__VA_ARGS__); })(v)
 #define fi first
 #define se second
 
@@ -52,8 +54,8 @@ template <class T> bool chmin(T &a, const T &b) {
 #define dump(a, h, w)                                                          \
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
-        rep(i, h) {                                                            \
-            rep(j, w) cerr << a[i][j] << sp;                                   \
+        rep(_i, h) {                                                           \
+            rep(_j, w) cerr << a[_i][_j] << sp;                                \
             cerr << rt;                                                        \
         }                                                                      \
         cerr << "]" << rt;                                                     \
@@ -62,8 +64,8 @@ template <class T> bool chmin(T &a, const T &b) {
 #define vdump(a, n)                                                            \
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [";                              \
-        rep(i, n) if (i) cerr << sp << a[i];                                   \
-        else cerr << a[i];                                                     \
+        rep(_i, n) if (_i) cerr << sp << a[_i];                                \
+        else cerr << a[_i];                                                    \
         cerr << "]" << rt;                                                     \
     }
 
