@@ -2,15 +2,16 @@
 
 template <typename T = ll> struct Dijkstra {
     ll V;
-    using P = pair<ll, ll>;
+    using P = pair<ll, T>;
+    using P2 = pair<T, ll>;
     vector<vector<P>> G;
     vector<T> dist;
     vector<bool> used;
     Dijkstra(ll v) : V(v), G(v), dist(v), used(v) {}
-    void setDist(ll a, ll b, ll d) { G[a].push_back(P(d, b)); }
+    void setDist(ll a, ll b, ll d) { G[a].push_back(P(b, d)); }
     void calc(ll s = 0) {
-        priority_queue<P, vector<P>, greater<P>> Q;
-        Q.push(P(0, s));
+        priority_queue<P2, vector<P2>, greater<P2>> Q;
+        Q.push(P2(0, s));
         fill_n(dist.begin(), V, INF);
         fill_n(used.begin(), V, false);
         while (!Q.empty()) {
@@ -20,8 +21,8 @@ template <typename T = ll> struct Dijkstra {
             if (used[t]) continue;
             used[t] = true, dist[t] = d;
             for (P e : G[t]) {
-                if (dist[e.second] <= d + e.first) continue;
-                Q.push(P(d + e.first, e.second));
+                if (dist[e.first] <= d + e.second) continue;
+                Q.push(P(d + e.second, e.first));
             }
         }
     }
