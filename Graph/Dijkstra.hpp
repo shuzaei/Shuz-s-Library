@@ -8,7 +8,7 @@ template <typename T = ll> struct Dijkstra {
     vector<T> dist;
     vector<bool> used;
     Dijkstra(ll v) : V(v), G(v), dist(v), used(v) {}
-    void setDist(ll a, ll b, ll d) { G[a].push_back(P(b, d)); }
+    void setDist(ll a, ll b, T d) { G[a].push_back(P(b, d)); }
     void calc(ll s = 0) {
         priority_queue<P2, vector<P2>, greater<P2>> Q;
         Q.push(P2(0, s));
@@ -22,7 +22,7 @@ template <typename T = ll> struct Dijkstra {
             used[t] = true, dist[t] = d;
             for (P e : G[t]) {
                 if (dist[e.first] <= d + e.second) continue;
-                Q.push(P(d + e.second, e.first));
+                Q.push(P2(d + e.second, e.first));
             }
         }
     }
