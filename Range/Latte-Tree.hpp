@@ -23,17 +23,10 @@ struct LatteTree {
     }
     inline Type result(ll x) {
         Type res = unit;
-        ll l = 0, r = n, i = 0;
-        while (r - l > 1) {
+        ll i = n - 1 + x;
+        while (i != 0) {
             res = comb(res, node[i]);
-            ll mid = (l + r) / 2;
-            if (l <= x and x < mid) {
-                r = mid;
-                i = 2 * i + 1;
-            } else {
-                l = mid;
-                i = 2 * i + 2;
-            }
+            i = (i - 1) / 2;
         }
         return comb(res, node[i]);
     }

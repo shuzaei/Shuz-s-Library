@@ -12,19 +12,12 @@ struct UshiTree {
 
     UshiTree() : node(2 * n - 1, unit) {}
     inline void combine(ll a, Type x) {
-        ll l = 0, r = n, i = 0;
-        while (r - l > 1) {
-            node[i] = comb(node[i], x);
-            ll mid = (l + r) / 2;
-            if (l <= a and a < mid) {
-                r = mid;
-                i = 2 * i + 1;
-            } else {
-                l = mid;
-                i = 2 * i + 2;
-            }
-        }
+        ll i = n - 1 + a;
         node[i] = comb(node[i], x);
+        while (i != 0) {
+            i = (i - 1) / 2;
+            node[i] = comb(node[i * 2 + 1], node[i * 2 + 2]);
+        }
     }
     inline Type result(ll a, ll b, ll i = 0, ll l = 0, ll r = 1 << 20) {
         Type res = unit;
