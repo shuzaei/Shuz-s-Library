@@ -29,4 +29,4 @@ struct UshiTree {
                         result(a, b, i * 2 + 2, (l + r) / 2, r));
         }
     }
-} seg;
+};
