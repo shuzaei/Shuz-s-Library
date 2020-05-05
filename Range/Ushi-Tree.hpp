@@ -24,6 +24,7 @@ struct UshiTree {
                 i = 2 * i + 2;
             }
         }
+        node[i] = comb(node[i], x);
     }
     inline Type result(ll a, ll b, ll i = 0, ll l = 0, ll r = 1 << 20) {
         Type res = unit;
