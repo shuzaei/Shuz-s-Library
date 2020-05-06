@@ -70,8 +70,8 @@ Double cos(Vector a, Vector b) { return dot(a, b) / a.norm() / b.norm(); }
 Double arg(Vector p) { return atan2l(p.y, p.x); }
 Double angle(Vector a, Vector b) {
     Double theta = arg(b) - arg(a);
-    while (theta <= -M_PIL + EPS) theta += 2.0l * M_PIL;
-    while (theta > M_PIL - EPS) theta -= 2.0l * M_PIL;
+    while (theta < -M_PIL + EPS) theta += 2.0l * M_PIL;
+    while (theta > M_PIL + EPS) theta -= 2.0l * M_PIL;
     return theta;
 }
 Vector polar(Double a, Double r) { return Point(a * cosl(r), a * sinl(r)); }
