@@ -161,6 +161,30 @@ contains_status contains(Polygon g, Point p) {
     }
     return x ? OUT : IN;
 }
+Polygon convexHull(Polygon s) {
+    Polygon u, l;
+    if (s.size() <= 3) return s;
+    all(sort, s);
+    u.push_back(s[0]), u.push_back(s[1]);
+    l.push_back(s[s.size() - 1]), l.push_back(s[s.size() - 2]);
+    inc(i, 2, s.size() - 1) {
+        while (u.size() >= 2 and
+               ccw(u[s.size() - 2], u[s.size() - 1], s[i]) == CLOCKWISE) {
+            u.pop_back();
+        }
+        u.push_back(s[i]);
+    }
+    dec(i, s.size() - 3, 0) {
+        while (l.size() >= 2 and
+               ccw(l[s.size() - 2], l[s.size() - 1], s[i]) == CLOCKWISE) {
+            l.pop_back();
+        }
+        l.push_back(s[i]);
+    }
+    all(reverse, l);
+    move(l.begin(), l.end(), std::back_inserter(u));
+    return u;
+}
 
 istream &operator>>(istream &is, Point &p) {
     is >> p.x >> p.y;
