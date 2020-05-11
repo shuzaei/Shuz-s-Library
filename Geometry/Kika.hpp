@@ -61,8 +61,8 @@ enum contains_status { IN = 2, ON = 1, OUT = 0 };
 
 Point operator*(Double a, Point p) { return Point(a * p.x, a * p.y); }
 Point operator/(Double a, Point p) { return Point(p.x / a, p.y / a); }
-Double abs(Vector a) { return a.x * a.x + a.y * a.y; }
-Double norm(Vector a) { return sqrtl(abs(a)); }
+Double abs(Vector a) { return sqrtl(norm(a)); }
+Double norm(Vector a) { return a.x * a.x + a.y * a.y; }
 Double dot(Vector a, Vector b) { return a.x * b.x + a.y * b.y; }
 Double cross(Vector a, Vector b) { return a.x * b.y - a.y * b.x; }
 Double sin(Vector a, Vector b) { return cross(a, b) / a.norm() / b.norm(); }
