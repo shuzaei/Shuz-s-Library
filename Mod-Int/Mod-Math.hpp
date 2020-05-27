@@ -37,7 +37,7 @@ template <ull mod = MOD> struct modmath {
     modmath(ll n = 1 << 20) : max(n), fac(n + 1), inv(n + 1) {
         fac[0] = 1;
         rep(i, n) fac[i + 1] = fac[i] * (i + 1) % mod;
-        inv[n] = inv(fac[n], mod);
+        inv[n] = ::inv(fac[n], mod);
         dec(i, n - 1, 0) inv[i] = inv[i + 1] * (i + 1) % mod;
     }
 
