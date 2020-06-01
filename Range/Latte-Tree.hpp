@@ -11,8 +11,7 @@ struct LatteTree {
     vector<Type> node;
 
     LatteTree() : node(2 * n - 1, unit) {}
-    inline void combine(ll a, ll b, Type x, ll i = 0, ll l = 0,
-                        ll r = 1 << 20) {
+    inline void combine(ll a, ll b, Type x, ll i = 0, ll l = 0, ll r = n) {
         if (b <= l or r <= a) return;
         if (a <= l and r <= b) {
             node[i] = comb(node[i], x);

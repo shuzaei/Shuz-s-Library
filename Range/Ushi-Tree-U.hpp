@@ -19,7 +19,7 @@ struct UshiTree {
             node[i] = comb(node[i * 2 + 1], node[i * 2 + 2]);
         }
     }
-    inline Type result(ll a, ll b, ll i = 0, ll l = 0, ll r = 1 << 20) {
+    inline Type result(ll a, ll b, ll i = 0, ll l = 0, ll r = n) {
         Type res = unit;
         if (b <= l or r <= a) return res;
         if (a <= l and r <= b) {
