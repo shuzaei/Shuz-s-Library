@@ -1,8 +1,40 @@
 #include "Shuzaei.hpp"
 
+struct UFW {
+    vector<ll> par, dist;
+    UFW(ll N) : par(N, -1), dist(N) {}
+    ll root(ll x) {
+        if (par[x] < 0) {
+            return x;
+        } else {
+            ll rx = root(par[x]);
+            dist[x] += dist[par[x]];
+            return par[x] = rx;
+        }
+    }
+    bool unite(ll x, ll y, ll w) {
+        ll rx = root(x), ry = root(y);
+        if (rx != ry) {
+            if (par[rx] > par[ry]) swap(rx, ry);
+            par[rx] += par[ry];
+            par[ry] = rx;
+            dist[ry] = w + dist[x] - dist[y];
+            return true;
+        }
+        return false;
+    }
+    ll weight(ll x) {
+        root(x);
+        return dist[x];
+    }
+    ll diff(ll x, ll y) { return weight(y) - weight(x); }
+    bool same(ll x, ll y) { return root(x) == root(y); }
+    ll size(ll x) { return -par[root(x)]; }
+};
+
 struct UFS {
     vector<ll> data;
-    UFS(ll N) : data(N) { rep(i, N) data[i] = -1; }
+    UFS(ll N) : data(N, -1) {}
     ll root(ll x) {
         if (data[x] < 0)
             return x;
@@ -25,7 +57,7 @@ struct UFS {
 
 struct UFR {
     vector<ll> data;
-    UFR(ll N) : data(N) { rep(i, N) data[i] = -1; }
+    UFR(ll N) : data(N, -1) {}
     ll root(ll x) {
         if (data[x] < 0)
             return x;
