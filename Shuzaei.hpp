@@ -50,7 +50,7 @@ template <class T> bool chmin(T &a, const T &b) {
         for (auto &&X : {__VA_ARGS__}) {                                       \
             if (typeid(X) == typeid(INF) and abs(X) == INF) {                  \
                 cerr << "[";                                                   \
-                if (a[_i] < 0) cerr << "-";                                    \
+                if (X < 0) cerr << "-";                                        \
                 cerr << "∞] ";                                                 \
             } else {                                                           \
                 cerr << "[" << X << "] ";                                      \
