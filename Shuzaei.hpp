@@ -47,7 +47,13 @@ template <class T> bool chmin(T &a, const T &b) {
 #define debug(...)                                                             \
     {                                                                          \
         cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                     \
-        for (auto &&X : {__VA_ARGS__}) cerr << "[" << X << "] ";               \
+        for (auto &&X : {__VA_ARGS__}) {                                       \
+            if (typeid(X) == typeid(INF) and X == INF) {                       \
+                cerr << "[∞] ";                                                \
+            } else {                                                           \
+                cerr << "[" << X << "] ";                                      \
+            }                                                                  \
+        }                                                                      \
         cerr << rt;                                                            \
     }
 
@@ -55,7 +61,13 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
         rep(_i, h) {                                                           \
-            rep(_j, w) cerr << a[_i][_j] << sp;                                \
+            rep(_j, w) {                                                       \
+                if (typeid(a[_i][_j]) == typeid(INF) and a[_i][_j] == INF) {   \
+                    cerr << "∞" << sp;                                         \
+                } else {                                                       \
+                    cerr << a[_i][_j] << sp;                                   \
+                }                                                              \
+            }                                                                  \
             cerr << rt;                                                        \
         }                                                                      \
         cerr << "]" << rt;                                                     \
@@ -64,8 +76,21 @@ template <class T> bool chmin(T &a, const T &b) {
 #define vdump(a, n)                                                            \
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [";                              \
-        rep(_i, n) if (_i) cerr << sp << a[_i];                                \
-        else cerr << a[_i];                                                    \
+        rep(_i, n) {                                                           \
+            if (_i) {                                                          \
+                if (typeid(a[_i]) == typeid(INF) and a[_i] == INF) {           \
+                    cerr << sp << "∞";                                         \
+                } else {                                                       \
+                    cerr << sp << a[_i];                                       \
+                }                                                              \
+            } else {                                                           \
+                if (typeid(a[_i]) == typeid(INF) and a[_i] == INF) {           \
+                    cerr << "∞";                                               \
+                } else {                                                       \
+                    cerr << a[_i];                                             \
+                }                                                              \
+            }                                                                  \
+        }                                                                      \
         cerr << "]" << rt;                                                     \
     }
 
