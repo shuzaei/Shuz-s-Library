@@ -66,7 +66,7 @@ template <class T> bool chmin(T &a, const T &b) {
             rep(_j, w) {                                                       \
                 if (typeid(a[_i][_j]) == typeid(INF) and                       \
                     abs(a[_i][_j]) == INF) {                                   \
-                    if (a[_i] < 0) cerr << "-";                                \
+                    if (a[_i][_j] < 0) cerr << "-";                            \
                     cerr << "∞" << sp;                                         \
                 } else {                                                       \
                     cerr << a[_i][_j] << sp;                                   \
