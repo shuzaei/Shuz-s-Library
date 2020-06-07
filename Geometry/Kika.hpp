@@ -117,8 +117,8 @@ Double distanceLP(Line l, Point p) {
     return cross(l.p2 - l.p1, p - l.p1) / abs(l.p2 - l.p1);
 }
 Double distanceSP(Segment s, Point p) {
-    if (cross(s.p2 - s.p1, p - s.p1) < 0.0l) return abs(p - s.p1);
-    if (cross(s.p1 - s.p2, p - s.p2) < 0.0l) return abs(p - s.p2);
+    if (dot(s.p2 - s.p1, p - s.p1) < 0.0l) return abs(p - s.p1);
+    if (dot(s.p1 - s.p2, p - s.p2) < 0.0l) return abs(p - s.p2);
     return distanceLP(s, p);
 }
 Double distance(Segment s1, Segment s2) {
