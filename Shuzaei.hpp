@@ -48,8 +48,10 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                          \
         cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                     \
         for (auto &&X : {__VA_ARGS__}) {                                       \
-            if (typeid(X) == typeid(INF) and X == INF) {                       \
-                cerr << "[∞] ";                                                \
+            if (typeid(X) == typeid(INF) and abs(X) == INF) {                  \
+                cerr << "[";                                                   \
+                if (a[_i] < 0) cerr << "-";                                    \
+                cerr << "∞] ";                                                 \
             } else {                                                           \
                 cerr << "[" << X << "] ";                                      \
             }                                                                  \
@@ -62,7 +64,9 @@ template <class T> bool chmin(T &a, const T &b) {
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
         rep(_i, h) {                                                           \
             rep(_j, w) {                                                       \
-                if (typeid(a[_i][_j]) == typeid(INF) and a[_i][_j] == INF) {   \
+                if (typeid(a[_i][_j]) == typeid(INF) and                       \
+                    abs(a[_i][_j]) == INF) {                                   \
+                    if (a[_i] < 0) cerr << "-";                                \
                     cerr << "∞" << sp;                                         \
                 } else {                                                       \
                     cerr << a[_i][_j] << sp;                                   \
@@ -78,13 +82,15 @@ template <class T> bool chmin(T &a, const T &b) {
         cerr << __LINE__ << ": " << #a << " = [";                              \
         rep(_i, n) {                                                           \
             if (_i) {                                                          \
-                if (typeid(a[_i]) == typeid(INF) and a[_i] == INF) {           \
+                if (typeid(a[_i]) == typeid(INF) and abs(a[_i]) == INF) {      \
+                    if (a[_i] < 0) cerr << "-";                                \
                     cerr << sp << "∞";                                         \
                 } else {                                                       \
                     cerr << sp << a[_i];                                       \
                 }                                                              \
             } else {                                                           \
-                if (typeid(a[_i]) == typeid(INF) and a[_i] == INF) {           \
+                if (typeid(a[_i]) == typeid(INF) and abs(a[_i]) == INF) {      \
+                    if (a[_i] < 0) cerr << "-";                                \
                     cerr << "∞";                                               \
                 } else {                                                       \
                     cerr << a[_i];                                             \
