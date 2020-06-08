@@ -21,17 +21,17 @@ struct starry_sky_tree {
         }
         add(a, b, l, (l + r) / 2, k * 2 + 1, x);
         add(a, b, (l + r) / 2, r, k * 2 + 2, x);
-        data[k] = min(data[k * 2 + 1] + lazy[k * 2 + 1],
+        data[k] = max(data[k * 2 + 1] + lazy[k * 2 + 1],
                       data[k * 2 + 2] + lazy[k * 2 + 2]);
     }
 
     inline ll getmax(ll a, ll b) { return getmax(a, b, 0, size, 0); }
     inline ll getmax(ll a, ll b, ll l, ll r, ll k) {
-        if (b <= l || r <= a) return INF;
+        if (b <= l || r <= a) return 0;
         if (a <= l && r <= b) return data[k] + lazy[k];
 
         ll L = getmax(a, b, l, (l + r) / 2, k * 2 + 1);
         ll R = getmax(a, b, (l + r) / 2, r, k * 2 + 2);
-        return min(L, R) + lazy[k];
+        return max(L, R) + lazy[k];
     }
 };
