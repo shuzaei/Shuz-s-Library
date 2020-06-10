@@ -47,15 +47,7 @@ template <class T> bool chmin(T &a, const T &b) {
 #define debug(...)                                                             \
     {                                                                          \
         cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                     \
-        for (auto &&X : {__VA_ARGS__}) {                                       \
-            if (typeid(X) == typeid(INF) and abs(X) > INF / 2) {               \
-                cerr << "[";                                                   \
-                if (X < 0) cerr << "-";                                        \
-                cerr << "∞] ";                                                 \
-            } else {                                                           \
-                cerr << "[" << X << "] ";                                      \
-            }                                                                  \
-        }                                                                      \
+        for (auto &&X : {__VA_ARGS__}) cerr << "[" << X << "] ";               \
         cerr << rt;                                                            \
     }
 
@@ -63,15 +55,7 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
         rep(_i, h) {                                                           \
-            rep(_j, w) {                                                       \
-                if (typeid(a[_i][_j]) == typeid(INF) and                       \
-                    abs(a[_i][_j]) > INF / 2) {                                \
-                    if (a[_i][_j] < 0) cerr << "-";                            \
-                    cerr << "∞" << sp;                                         \
-                } else {                                                       \
-                    cerr << a[_i][_j] << sp;                                   \
-                }                                                              \
-            }                                                                  \
+            rep(_j, w) cerr << a[_i][_j] << sp;                                \
             cerr << rt;                                                        \
         }                                                                      \
         cerr << "]" << rt;                                                     \
@@ -81,21 +65,8 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [";                              \
         rep(_i, n) {                                                           \
-            if (_i) {                                                          \
-                if (typeid(a[_i]) == typeid(INF) and abs(a[_i]) > INF / 2) {   \
-                    if (a[_i] < 0) cerr << "-";                                \
-                    cerr << sp << "∞";                                         \
-                } else {                                                       \
-                    cerr << sp << a[_i];                                       \
-                }                                                              \
-            } else {                                                           \
-                if (typeid(a[_i]) == typeid(INF) and abs(a[_i]) > INF / 2) {   \
-                    if (a[_i] < 0) cerr << "-";                                \
-                    cerr << "∞";                                               \
-                } else {                                                       \
-                    cerr << a[_i];                                             \
-                }                                                              \
-            }                                                                  \
+            if (_i) cerr << sp;                                                \
+            cerr << a[_i];                                                     \
         }                                                                      \
         cerr << "]" << rt;                                                     \
     }
