@@ -60,8 +60,9 @@ enum ccw_status {
 
 enum contains_status { IN = 2, ON = 1, OUT = 0 };
 
+Point operator*(Point p, Double a) { return Point(a * p.x, a * p.y); }
 Point operator*(Double a, Point p) { return Point(a * p.x, a * p.y); }
-Point operator/(Double a, Point p) { return Point(p.x / a, p.y / a); }
+Point operator/(Point p, Double a) { return Point(p.x / a, p.y / a); }
 Double norm(Vector a) { return a.x * a.x + a.y * a.y; }
 Double abs(Vector a) { return sqrtl(norm(a)); }
 Double dot(Vector a, Vector b) { return a.x * b.x + a.y * b.y; }
