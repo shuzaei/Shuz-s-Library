@@ -126,7 +126,7 @@ Double distance(Segment s1, Segment s2) {
                min(distanceSP(s2, s1.p1), distanceSP(s2, s1.p2)));
 }
 Point crossPoint(Segment s1, Segment s2) {
-    Vector base = s2.p2 - s1.p1;
+    Vector base = s2.p2 - s2.p1;
     Double d1 = abs(cross(base, s1.p1 - s2.p1));
     Double d2 = abs(cross(base, s1.p2 - s2.p1));
     Double t = d1 / (d1 + d2);
