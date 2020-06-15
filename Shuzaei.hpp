@@ -42,7 +42,6 @@ template <class T> bool chmin(T &a, const T &b) {
     }
     return 0;
 }
-
 // Debug
 #define debug(...)                                                             \
     {                                                                          \
@@ -55,7 +54,13 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                          \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
         rep(_i, h) {                                                           \
-            rep(_j, w) cerr << a[_i][_j] << sp;                                \
+            rep(_j, w) {                                                       \
+                if (a[_i][_j] <= -INF / 2) cerr << '-';                        \
+                if (abs(a[_i][_j]) >= INF / 2)                                 \
+                    cerr << "∞" << sp;                                         \
+                else                                                           \
+                    cerr << a[_i][_j] << sp;                                   \
+            }                                                                  \
             cerr << rt;                                                        \
         }                                                                      \
         cerr << "]" << rt;                                                     \
@@ -66,7 +71,11 @@ template <class T> bool chmin(T &a, const T &b) {
         cerr << __LINE__ << ": " << #a << " = [";                              \
         rep(_i, n) {                                                           \
             if (_i) cerr << sp;                                                \
-            cerr << a[_i];                                                     \
+            if (a[_i] <= -INF / 2) cerr << '-';                                \
+            if (abs(a[_i]) >= INF / 2)                                         \
+                cerr << "∞" << sp;                                             \
+            else                                                               \
+                cerr << a[_i];                                                 \
         }                                                                      \
         cerr << "]" << rt;                                                     \
     }
