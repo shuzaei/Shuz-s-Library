@@ -7,18 +7,14 @@ struct dice {
     void rotate_left() { rotate(n.begin() + 1, n.begin() + 2, n.end() - 1); }
     void rotate_right() { rep(i, 3) rotate_left(); }
     void rotate_north() {
-        ll mem = n[0];
-        n[0] = n[2];
-        n[2] = n[5];
-        n[5] = n[4];
-        n[4] = mem;
+        swap(n[0], n[2]);
+        swap(n[2], n[5]);
+        swap(n[5], n[4]);
     }
     void rotate_east() {
-        ll mem = n[0];
-        n[0] = n[3];
-        n[3] = n[5];
-        n[5] = n[1];
-        n[1] = mem;
+        swap(n[0], n[3]);
+        swap(n[3], n[5]);
+        swap(n[5], n[1]);
     }
     void rotate_south() { rep(i, 3) rotate_north(); }
     void rotate_west() { rep(i, 3) rotate_east(); }
