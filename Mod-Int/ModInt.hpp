@@ -22,8 +22,8 @@ struct mint {
     mint operator*(const mint &a) const { return mint(*this) *= a; }
     bool operator==(const mint &a) const { return x == a.x; }
     bool operator!=(const mint &a) const { return x != a.x; }
-    bool operator<=(mint a, ll x) { return a.x <= x; }
-    bool operator<(mint a, ll x) { return a.x < x; }
+    bool operator<=(mint a) { return x <= a.x; }
+    bool operator<(mint a) { return x < a.x; }
     friend ll abs(mint a) { return a.x; }
 
     friend mint pow(const mint &a, ll n) {
