@@ -24,8 +24,8 @@ struct MST {
             return true;
         }
         ll kruskal() {
-            all(sort, edges,
-                [](wedge_t x, wedge_t y) { return x.weight < y.weight; });
+            sort(edges.begin(), edges.end(),
+                 [](wedge_t x, wedge_t y) { return x.weight < y.weight; });
             ll result = 0;
             for (auto e : edges)
                 if (unite(e.src, e.dst)) result += e.weight;

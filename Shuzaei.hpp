@@ -21,10 +21,9 @@ constexpr const char sp = ' ';
 #define pb push_back
 #define eb emplace_back
 #define elif else if
-#define all(a, v, ...)                                                         \
-    ([&](decltype((v)) w) { return (a)(begin(w), end(w), ##__VA_ARGS__); })(v)
-#define rall(a, v, ...)                                                        \
-    ([&](decltype((v)) w) { return (a)(rbegin(w), rend(w), ##__VA_ARGS__); })(v)
+/*
+'all' and 'rall' macro have been deleted, instead of 'all' and 'rall' snippets.
+*/
 #define fi first
 #define se second
 

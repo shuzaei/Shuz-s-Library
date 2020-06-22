@@ -30,6 +30,11 @@ struct UFW {
     ll diff(ll x, ll y) { return weight(y) - weight(x); }
     bool same(ll x, ll y) { return root(x) == root(y); }
     ll size(ll x) { return -par[root(x)]; }
+    ll size() {
+        ll cnt = 0;
+        rep(i, data.size()) if (i == root(i)) cnt++;
+        return cnt;
+    }
 };
 
 struct UFS {
@@ -53,6 +58,11 @@ struct UFS {
     }
     bool same(ll x, ll y) { return root(x) == root(y); }
     ll size(ll x) { return -data[root(x)]; }
+    ll size() {
+        ll cnt = 0;
+        rep(i, data.size()) if (i == root(i)) cnt++;
+        return cnt;
+    }
 };
 
 struct UFR {

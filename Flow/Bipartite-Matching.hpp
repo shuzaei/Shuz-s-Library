@@ -23,10 +23,10 @@ struct BipartiteGraph {
     }
     ll matching() {
         ll res = 0;
-        fill(all(match), -1);
+        fill(match.begin(), match.end(), -1);
         rep(i, V) {
             if (match[i] == -1) {
-                fill(all(used), false);
+                fill(used.begin(), used.end(), false);
                 if (dfs(i)) res++;
             }
         }
