@@ -20,8 +20,11 @@ struct mint {
     mint operator+(const mint &a) const { return mint(*this) += a; }
     mint operator-(const mint &a) const { return mint(*this) -= a; }
     mint operator*(const mint &a) const { return mint(*this) *= a; }
-    mint operator==(const mint &a) const { return x == a.x; }
-    mint operator!=(const mint &a) const { return x != a.x; }
+    bool operator==(const mint &a) const { return x == a.x; }
+    bool operator!=(const mint &a) const { return x != a.x; }
+    bool operator<=(mint a, ll x) { return a.x <= x; }
+    bool operator<(mint a, ll x) { return a.x < x; }
+    friend ll abs(mint a) { return a.x; }
 
     friend mint pow(const mint &a, ll n) {
         if (!n) return 1;

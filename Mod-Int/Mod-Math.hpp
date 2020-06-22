@@ -26,5 +26,5 @@ struct modmath {
         if (n < 0) return 0;
         return fac[2 * n] * inv[n] * inv[n + 1];
     }
-    mint H(ll n, ll r) { return comb(n + r - 1, n - 1); }
+    mint H(ll n, ll r) { return C(n + r - 1, n - 1); }
 } math;
