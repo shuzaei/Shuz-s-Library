@@ -1,6 +1,9 @@
+#include "Shuzaei.hpp"
+
+const ll mo = 1e9 + 7;
 struct mint {
-    ll x, mo;
-    mint(ll x = 0, ll mo = 1e9 + 7) : x((x % mo + mo) % mo), mo(mo) {}
+    ll x;
+    mint(ll x = 0) : x((x % mo + mo) % mo) {}
     mint operator-() const { return mint(-x); }
     mint &operator+=(const mint &a) {
         if ((x += a.x) >= mo) x -= mo;
@@ -30,7 +33,7 @@ struct mint {
 
     mint inv() const { return pow(*this, mo - 2); }
     mint &operator/=(mint &a) { return (*this) *= a.inv(); }
-    mint &operator/(mint &a) const { return mint(*this) /= a; }
+    mint operator/(mint a) const { return mint(*this) /= a; }
 
     friend istream &operator>>(istream &is, mint &a) {
         ll t;

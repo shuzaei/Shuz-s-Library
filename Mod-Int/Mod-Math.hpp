@@ -1,13 +1,12 @@
 #include "Shuzaei.hpp"
 
 struct modmath {
-    ll max;
     vector<mint> fac, inv;
 
-    modmath(ll n = 1 << 20) : max(n), fac(n + 1), inv(n + 1) {
+    modmath(ll n = 1 << 20) : fac(n + 1), inv(n + 1) {
         fac[0] = 1;
         rep(i, n) fac[i + 1] = fac[i] * (i + 1);
-        inv[n] = 1 / fac[n];
+        inv[n] = 1M / fac[n];
         dec(i, n - 1, 0) inv[i] = inv[i + 1] * (i + 1);
     }
 
