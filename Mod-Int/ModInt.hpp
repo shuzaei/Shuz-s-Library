@@ -19,7 +19,6 @@ struct mint {
     mint operator*(const mint &a) const { return mint(*this) *= a; }
     mint operator==(const mint &a) const { return x == a.x; }
     mint operator!=(const mint &a) const { return x != a.x; }
-    operator ll() const { return x; }
 
     friend mint pow(const mint &a, ll n) {
         if (!n) return 1;
