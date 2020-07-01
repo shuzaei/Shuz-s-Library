@@ -16,6 +16,8 @@ constexpr const ll INF = 1LL << 60;
 constexpr const ll inf = 1 << 30;
 constexpr const char rt = '\n';
 constexpr const char sp = ' ';
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
 #define mp make_pair
 #define mt make_tuple
 #define pb push_back
