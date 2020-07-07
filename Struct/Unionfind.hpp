@@ -57,10 +57,11 @@ struct UFS {
         return false;
     }
     bool same(ll x, ll y) { return root(x) == root(y); }
+    bool isroot(ll x) { return x == root(x); }
     ll size(ll x) { return -data[root(x)]; }
     ll size() {
         ll cnt = 0;
-        rep(i, data.size()) if (i == root(i)) cnt++;
+        rep(i, data.size()) if (isroot(i)) cnt++;
         return cnt;
     }
 };
