@@ -35,7 +35,7 @@ struct mint {
     }
 
     mint inv() const { return pow(*this, mo - 2); }
-    mint &operator/=(mint &a) { return (*this) *= a.inv(); }
+    mint &operator/=(mint a) { return (*this) *= a.inv(); }
     mint operator/(mint a) const { return mint(*this) /= a; }
 
     friend istream &operator>>(istream &is, mint &a) {
