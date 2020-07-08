@@ -24,7 +24,7 @@ struct Graph_2D {
                     dist[next.x][next.y] > dist[now.x][now.y] + 1) {
                     Q.push(next);
                     dist[next.x][next.y] = dist[now.x][now.y] + 1;
-                    from[next.x][next.y] = now
+                    from[next.x][next.y] = now;
                 }
             }
         }
