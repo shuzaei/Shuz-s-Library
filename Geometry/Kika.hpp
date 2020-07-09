@@ -182,7 +182,8 @@ Polygon convexHull(Polygon s) {
         l.push_back(s[i]);
     }
     reverse(l.begin(), l.end());
-    move(u.begin(), u.end(), back_inserter(l));
+    reverse(u.begin(), u.end());
+    move(u.begin() + 1, u.end() - 1, back_inserter(l));
     return l;
 }
 
