@@ -169,21 +169,21 @@ Polygon convexHull(Polygon s) {
     l.push_back(s[s.size() - 1]), l.push_back(s[s.size() - 2]);
     inc(i, 2, s.size() - 1) {
         while (u.size() >= 2 and
-               ccw(u[s.size() - 2], u[s.size() - 1], s[i]) == CLOCKWISE) {
+               ccw(u[u.size() - 2], u[u.size() - 1], s[i]) != CLOCKWISE) {
             u.pop_back();
         }
         u.push_back(s[i]);
     }
     dec(i, s.size() - 3, 0) {
         while (l.size() >= 2 and
-               ccw(l[s.size() - 2], l[s.size() - 1], s[i]) == CLOCKWISE) {
+               ccw(l[l.size() - 2], l[l.size() - 1], s[i]) != CLOCKWISE) {
             l.pop_back();
         }
         l.push_back(s[i]);
     }
     reverse(l.begin(), l.end());
-    move(l.begin(), l.end(), back_inserter(u));
-    return u;
+    move(u.begin(), u.end(), back_inserter(l));
+    return l;
 }
 
 istream &operator>>(istream &is, Point &p) {
