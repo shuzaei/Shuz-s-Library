@@ -24,9 +24,7 @@ constexpr const char sp = ' ';
 #define pb push_back
 #define eb emplace_back
 #define elif else if
-/*
-'all' and 'rall' macro have been deleted, instead of 'all' and 'rall' snippets.
-*/
+#define ifn(x) if (not(x))
 #define fi first
 #define se second
 
