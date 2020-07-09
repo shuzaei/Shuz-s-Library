@@ -163,7 +163,7 @@ contains_status contains(Polygon g, Point p) {
 }
 Polygon convexHull(Polygon s) {
     Polygon u, l;
-    if (s.size() <= 3) return s;
+    if (s.size() <= 2) return s;
     sort(s.begin(), s.end());
     u.push_back(s[0]), u.push_back(s[1]);
     l.push_back(s[s.size() - 1]), l.push_back(s[s.size() - 2]);
