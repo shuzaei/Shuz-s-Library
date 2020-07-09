@@ -23,8 +23,9 @@ constexpr const char sp = ' ';
 #define mt make_tuple
 #define pb push_back
 #define eb emplace_back
-#define elif else if
 #define ifn(x) if (not(x))
+#define elif else if
+#define elifn else ifn
 #define fi first
 #define se second
 
