@@ -1,7 +1,7 @@
 #include "Shuzaei.hpp"
 
 namespace Matrix {
-using T = mint;
+using T = long double;
 using matrix = vector<vector<T>>;
 
 matrix E(ll N) {
