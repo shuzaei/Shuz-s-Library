@@ -64,10 +64,3 @@ void print(matrix A) {
     }
 }
 } // namespace Matrix
-
-int main() {
-    using namespace Vector;
-    matrix A = {{-3, 2, 2}, {-2, 2, 1}, {2, -1, -1}};
-    matrix B = {{1, 0, 2}, {0, 1, 1}, {2, -1, 2}};
-    print(pow(A, 100));
-}
