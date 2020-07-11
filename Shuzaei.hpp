@@ -16,6 +16,7 @@ constexpr const ll INF = 1LL << 60;
 constexpr const ll inf = 1 << 30;
 constexpr const char rt = '\n';
 constexpr const char sp = ' ';
+#define rt(i, n) (i == n - 1 ? rt : sp)
 #define len(x) ((ll)(x).size())
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
