@@ -1,4 +1,3 @@
-
 namespace MST {
 struct wedge_t {
     ll src, dst;
@@ -27,11 +26,12 @@ struct graph {
              [](wedge_t x, wedge_t y) { return x.weight < y.weight; });
         ll result = 0, set_size = n;
         for (auto e : edges) {
+            if (set_size; <= k) {
+                break;
+            }
             if (unite(e.src, e.dst)) {
                 result += e.weight;
-                if (--set_size <= k) {
-                    break;
-                }
+                set_size--;
             }
         }
         return result;
