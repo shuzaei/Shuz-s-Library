@@ -26,7 +26,7 @@ struct graph {
              [](wedge_t x, wedge_t y) { return x.weight < y.weight; });
         ll result = 0, set_size = n;
         for (auto e : edges) {
-            if (set_size; <= k) {
+            if (set_size <= k) {
                 break;
             }
             if (unite(e.src, e.dst)) {
