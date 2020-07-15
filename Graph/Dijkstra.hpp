@@ -45,9 +45,9 @@ template <typename T = ll> struct Dijkstra {
         G[a].push_back(P(b, d));
         if (reverse) G[b].push_back(P(a, d));
     }
-    void calc(vector<ll> s = {0}) {
+    void calc(vector<ll> s = {0}, ll indexed = 0) {
         priority_queue<P2, vector<P2>, greater<P2>> Q;
-        each(i, s) Q.push(P2(0, i));
+        each(i, s) Q.push(P2(0, i - indexed));
         fill_n(dist.begin(), V, INF);
         fill_n(used.begin(), V, false);
         while (!Q.empty()) {
