@@ -45,4 +45,5 @@ template <class T = ll> struct SWA {
             D.pop_front();
         }
     }
+    size_t size() { return D.size(); }
 };
