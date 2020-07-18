@@ -1,26 +1,23 @@
 #include "Shuzaei.hpp"
 
 template <class T> struct slidemin {
-#define __SIGSEGV__ "Segmentation fault: 11"
-    ll N, l, r;
-    vector<ll> data;
+    ll top;
+    deque<T> data;
     deque<ll> deq;
-    slidemin(ll n, ll start) : N(n), data(n), l(start), r(start) {}
-    void setdata(ll itr, ll val) { data[itr] = val; }
+    slidemin() : top(0) {}
     void pop_front() {
-        while (deq.size() && deq.front() <= l) {
+        while (deq.size() and deq.front() <= top) {
             deq.pop_front();
         }
-        l++;
-        if (l >= N) cerr << __SIGSEGV__ << endl;
+        top++;
+        if (top >= data.size()) abort();
     }
-    void push_back() {
-        while (deq.size() && data[deq.back()] > data[r]) {
+    void push_back(T val) {
+        data.push_back(val);
+        while (deq.size() and data[deq.back()] > data[data.size() - 1]) {
             deq.pop_back();
         }
-        deq.push_back(r);
-        if (r > N) cerr << __SIGSEGV__ << endl;
-        r++;
+        deq.push_back(data.size() - 1);
     }
-    ll min() { return data[deq.front()]; }
+    ll operator() { return data[deq.front()]; }
 };
