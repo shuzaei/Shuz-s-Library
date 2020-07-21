@@ -8,25 +8,6 @@ using ld = long double;
 template <class T> using pvector = vector<pair<T, T>>;
 template <class T>
 using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
-using graph = vector<vector<ll>>;
-template <class T> using wgraph = vector<vector<ll, T>>;
-bool __DIRECTED__ = true;
-istream &operator>>(istream &is, graph &g) {
-    ll a, b;
-    is >> a >> b;
-    g[a - 1].pb(b - 1);
-    if (__DIRECTED__ == false) g[b - 1].pb(a - 1);
-    return is;
-}
-
-template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
-    ll a, b;
-    T c;
-    is >> a >> b >> c;
-    g[a - 1].pb({b - 1, c});
-    if (__DIRECTED__ == false) g[b - 1].pb({a - 1, c});
-    return is;
-}
 constexpr const ll dx[4] = {1, 0, -1, 0};
 constexpr const ll dy[4] = {0, 1, 0, -1};
 constexpr const ll MOD = 1e9 + 7;
@@ -48,6 +29,26 @@ constexpr const char sp = ' ';
 #define elifn else ifn
 #define fi first
 #define se second
+
+using graph = vector<vector<ll>>;
+template <class T> using wgraph = vector<vector<ll, T>>;
+bool __DIRECTED__ = true;
+istream &operator>>(istream &is, graph &g) {
+    ll a, b;
+    is >> a >> b;
+    g[a - 1].pb(b - 1);
+    if (__DIRECTED__ == false) g[b - 1].pb(a - 1);
+    return is;
+}
+
+template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
+    ll a, b;
+    T c;
+    is >> a >> b >> c;
+    g[a - 1].pb({b - 1, c});
+    if (__DIRECTED__ == false) g[b - 1].pb({a - 1, c});
+    return is;
+}
 
 template <class T> bool chmax(T &a, const T &b) {
     if (a < b) {
