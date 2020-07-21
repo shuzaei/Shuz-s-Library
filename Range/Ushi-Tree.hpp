@@ -19,6 +19,14 @@ struct UshiTree {
             node[i] = comb(node[i * 2 + 1], node[i * 2 + 2]);
         }
     }
+    inline void update(ll a, Type x) {
+        ll i = n - 1 + a;
+        node[i] = x;
+        while (i != 0) {
+            i = (i - 1) / 2;
+            node[i] = comb(node[i * 2 + 1], node[i * 2 + 2]);
+        }
+    }
     inline Type result(ll a, ll b, ll i = 0, ll l = 0, ll r = n) {
         Type res = unit;
         if (b <= l or r <= a) return res;

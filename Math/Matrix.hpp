@@ -3,9 +3,10 @@
 namespace Matrix {
 using T = long double;
 using matrix = vector<vector<T>>;
+using elem_v = vector<T>;
 
 matrix E(ll N) {
-    matrix A(N, vector<T>(N));
+    matrix A(N, elem_v(N));
     rep(i, N) A[i][i] = 1;
     return A;
 }
@@ -38,7 +39,7 @@ matrix multiple(T A, matrix B) {
 }
 matrix product(matrix A, matrix B) {
     int m = A.size(), n = B.size(), l = B[0].size();
-    matrix C(m, vector<T>(l));
+    matrix C(m, elem_v(l));
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < l; j++) {
             for (int k = 0; k < n; k++) {
