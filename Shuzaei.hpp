@@ -8,6 +8,8 @@ using ld = long double;
 template <class T> using pvector = vector<pair<T, T>>;
 template <class T>
 using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
+using vector<vector<ll>> = graph;
+template <class T> using vector<vector<ll, T>> = wgraph;
 constexpr const ll dx[4] = {1, 0, -1, 0};
 constexpr const ll dy[4] = {0, 1, 0, -1};
 constexpr const ll MOD = 1e9 + 7;
