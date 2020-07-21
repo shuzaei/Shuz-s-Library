@@ -10,6 +10,23 @@ template <class T>
 using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
+bool __DIRECTED__ = 1;
+istream &operator>>(istream &is, graph &g) {
+    ll a, b;
+    is >> a >> b;
+    g[a - 1].pb(b - 1);
+    if (__DIRECTED__ == false) g[b - 1].pb(a - 1);
+    return is;
+}
+
+template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
+    ll a, b;
+    T c;
+    is >> a >> b >> c;
+    g[a - 1].pb({b - 1, c});
+    if (__DIRECTED__ == false) g[b - 1].pb({a - 1, c});
+    return is;
+}
 constexpr const ll dx[4] = {1, 0, -1, 0};
 constexpr const ll dy[4] = {0, 1, 0, -1};
 constexpr const ll MOD = 1e9 + 7;
@@ -46,6 +63,7 @@ template <class T> bool chmin(T &a, const T &b) {
     }
     return 0;
 }
+
 // Debug
 #define debug(...)                                                             \
     {                                                                          \
@@ -93,15 +111,46 @@ template <class T> bool chmin(T &a, const T &b) {
 
 // Stream
 #define fout(n) cout << fixed << setprecision(n)
-struct stream {
-    stream() { cin.tie(nullptr), ios::sync_with_stdio(false); }
-} stream;
+struct io {
+    io() { cin.tie(nullptr), ios::sync_with_stdio(false); }
+} io;
 
 // Speed
-#pragma GCC optimize("Ofast")
+#pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
 
 // Math
-//#define gcd __gcd
-inline constexpr ll gcd(ll a, ll b) { return b ? gcd(b, a % b) : a; }
-inline constexpr ll lcm(ll a, ll b) { return a * b / gcd(a, b); }
+inline constexpr ll gcd(const ll a, const ll b) {
+    return b ? gcd(b, a % b) : a;
+}
+inline constexpr ll lcm(const ll a, const ll b) { return a / gcd(a, b) * b; }
+
+inline constexpr ll modulo(const ll n, const ll m = MOD) {
+    ll k = n % m;
+    return k + m * (k < 0);
+}
+inline constexpr ll chmod(ll &n, const ll m = MOD) {
+    n %= m;
+    return n += m * (n < 0);
+}
+inline constexpr ll mpow(ll a, ll n, const ll m = MOD) {
+    ll r = 1;
+    rep(i, 64) {
+        if (n & (1LL << i)) r *= a;
+        chmod(r, m);
+        a *= a;
+        chmod(a, m);
+    }
+    return r;
+}
+inline ll inv(const ll n, const ll m = MOD) {
+    ll a = n, b = m, x = 1, y = 0;
+    while (b) {
+        ll t = a / b;
+        a -= t * b;
+        swap(a, b);
+        x -= t * y;
+        swap(x, y);
+    }
+    return modulo(x, m);
+}
