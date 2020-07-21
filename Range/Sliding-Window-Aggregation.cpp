@@ -19,7 +19,7 @@ template <class T = ll> struct SWA {
     T operator()() {
         flip();
         if (A.size() == 0) {
-            abort();
+            raise(SIGSEGV);
         } else if (B.size() == 0) {
             return A.back();
         } else {
@@ -37,7 +37,7 @@ template <class T = ll> struct SWA {
     void pop() {
         flip();
         if (A.size() == 0) {
-            abort();
+            raise(SIGSEGV);
         } else {
             A.pop_back();
             D.pop_front();
