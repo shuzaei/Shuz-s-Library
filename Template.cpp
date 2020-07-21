@@ -10,7 +10,7 @@ template <class T>
 using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
-bool __DIRECTED__ = 1;
+bool __DIRECTED__ = true;
 istream &operator>>(istream &is, graph &g) {
     ll a, b;
     is >> a >> b;
