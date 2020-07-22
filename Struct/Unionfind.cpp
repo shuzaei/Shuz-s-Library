@@ -1,3 +1,35 @@
+struct UFP {
+    using P = pair<ll, ll>;
+    vector<ll> par, time;
+    vector<vector<P>> __size;
+    UFP(ll n) : par(n, -1), time(n, INF), __size(n, {{-1, -1}}) {}
+    ll root(ll x, ll t) {
+        if (time[x] > t) {
+            return x;
+        } else {
+            return root(par[x], t);
+        }
+    }
+    bool unite(ll x, ll y, ll t) {
+        ll rx = root(x, t), ry = root(y, t);
+        if (rx != ry) {
+            if (par[rx] > par[ry]) swap(rx, ry);
+            par[rx] += par[ry];
+            par[ry] = rx;
+            time[ry] = t;
+            __size[rx].push_back({t, par[rx]});
+            return true;
+        }
+        return false;
+    }
+    bool same(ll x, ll y, ll t) { return root(x, t) == root(y, t); }
+    ll size(ll x, ll t, bool rooted = true) {
+        if (rooted) x = root(x, t);
+        return -(--lower_bound(__size[x].begin(), __size[x].end(), P(t, 0)))
+                    ->second;
+    }
+};
+
 struct UFW {
     vector<ll> par, dist;
     UFW(ll N) : par(N, -1), dist(N) {}
