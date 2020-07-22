@@ -26,9 +26,9 @@ template <class T> vector<u64> cast(vector<T> v) {
 }
 
 struct rhash {
-    vector<u64> data, hash_val, base_pow;
-    rhash(vector<u64> v) : data(v) {
-        u64 n = data.size();
+    vector<u64> hash_val, base_pow;
+    rhash(vector<u64> v) {
+        u64 n = v.size();
         hash_val.assign(n + 1, 0);
         base_pow.assign(n + 1, 0);
         base_pow[0] = 1;
