@@ -17,7 +17,7 @@ struct UFP {
             par[rx] += par[ry];
             par[ry] = rx;
             time[ry] = t;
-            __size[rx].push_back({t, par[rx]});
+            __size[rx].push_back({t, -par[rx]});
             return true;
         }
         return false;
@@ -25,8 +25,8 @@ struct UFP {
     bool same(ll x, ll y, ll t) { return root(x, t) == root(y, t); }
     ll size(ll x, ll t, bool rooted = true) {
         if (rooted) x = root(x, t);
-        return -(--lower_bound(__size[x].begin(), __size[x].end(), P(t, 0)))
-                    ->second;
+        return (--lower_bound(__size[x].begin(), __size[x].end(), P(t, 0)))
+            ->second;
     }
 };
 
