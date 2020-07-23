@@ -1,13 +1,14 @@
 struct SCC {
+    ll num, new_num;
     vector<vector<ll>> graph;
     vector<vector<ll>> rgraph;
     vector<vector<ll>> new_graph;
-    vector<ll> used;
     vector<ll> in_count;
     vector<ll> new_in_count;
     vector<ll> tp_index;
     vector<ll> nodes;
-    ll num, new_num;
+    vector<ll> used;
+
     SCC(ll n)
         : num(n), graph(n), rgraph(n), in_count(n), tp_index(n), used(n) {}
     void add_edge(ll from, ll to) {
