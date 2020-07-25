@@ -1,4 +1,4 @@
-struct flow {
+struct Dinic {
     struct edge {
         ll to, cap, rev;
         edge() {}
@@ -6,7 +6,7 @@ struct flow {
     };
     vector<vector<edge>> graph;
     vector<bool> used;
-    flow(ll n) : graph(n), used(n) {}
+    Dinic(ll n) : graph(n), used(n) {}
     void add_edge(ll from, ll to, ll cap) {
         ll index = graph[to].size(), rindex = graph[from].size();
         graph[from].push_back(edge(to, cap, index));
