@@ -15,13 +15,12 @@ struct Dinic {
     ll dfs(ll now, ll to, ll flow) {
         if (now == to) return flow;
         used[now] = true;
-        rep(i, graph[now].size()) {
-            ll next = graph[now][i].to, ri = graph[now][i].rev;
-            if (!used[next] and graph[now][i].cap > 0) {
-                ll drain = dfs(next, to, min(flow, graph[now][i].cap));
+        for (edge &e : graph[now]) {
+            if (!used[e.to] and e.cap > 0) {
+                ll drain = dfs(e.to, to, min(flow, e.cap));
                 if (drain > 0) {
-                    graph[now][i].cap -= drain;
-                    graph[next][ri].cap += drain;
+                    e.cap -= drain;
+                    graph[e.to][e.rev].cap += drain;
                     return drain;
                 }
             }
