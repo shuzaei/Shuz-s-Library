@@ -1,4 +1,4 @@
-struct Dinic {
+struct Ford_Fulkerson {
     struct edge {
         ll to, cap, rev;
         edge() {}
@@ -6,7 +6,7 @@ struct Dinic {
     };
     vector<vector<edge>> graph;
     vector<bool> used;
-    Dinic(ll n) : graph(n), used(n) {}
+    Ford_Fulkerson(ll n) : graph(n), used(n) {}
     void add_edge(ll from, ll to, ll cap) {
         ll index = graph[to].size(), rindex = graph[from].size();
         graph[from].push_back(edge(to, cap, index));
