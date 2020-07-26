@@ -119,8 +119,8 @@ struct io {
 
 // Speed
 #pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native")
-
+#pragma GCC target(                                                            \
+    "sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native,arch=skylake-avx512")
 // Math
 inline constexpr ll gcd(const ll a, const ll b) {
     return b ? gcd(b, a % b) : a;
