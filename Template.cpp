@@ -29,6 +29,7 @@ constexpr const char sp = ' ';
 #define elifn else ifn
 #define fi first
 #define se second
+#define uniq(x) ((x).erase(unique(all(x)), (x).end()))
 
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
