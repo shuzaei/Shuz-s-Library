@@ -39,6 +39,9 @@ struct LCA {
     ll rootDist(ll node, ll root) { return dist[node] - dist[root]; }
 };
 
+#include <bits/stdc++.h>
+using namespace std;
+
 struct LCA {
     int n, d, inf = 1000000000;
     vector<int> dist;
@@ -67,10 +70,10 @@ struct LCA {
     int lca(int a, int b) {
         if (dist[a] < dist[b]) swap(a, b);
         int diff = dist[a] - dist[b];
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < d; i++) {
             if ((1 << i) & diff) a = root[i][b];
         }
-        for (int i = 14; i >= 0; i++) {
+        for (int i = d - 1; i >= 0; i++) {
             if (root[i][a] != root[i][b]) {
                 a = root[i][a], b = root[i][b];
             }
