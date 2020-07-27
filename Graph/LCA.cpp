@@ -73,7 +73,7 @@ struct LCA {
         for (int i = 0; i < d; i++) {
             if ((1 << i) & diff) a = root[i][b];
         }
-        for (int i = d - 1; i >= 0; i++) {
+        for (int i = d - 1; i >= 0; i--) {
             if (root[i][a] != root[i][b]) {
                 a = root[i][a], b = root[i][b];
             }
