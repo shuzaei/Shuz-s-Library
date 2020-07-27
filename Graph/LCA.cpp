@@ -39,18 +39,20 @@ struct LCA {
     ll rootDist(ll node, ll root) { return dist[node] - dist[root]; }
 };
 
-#include <bits/stdc++.h>
-using namespace std;
-
 struct LCA {
-    int n, d, inf = 1000000000;
+    int n, d = 0, inf = 1000000000;
     vector<int> dist;
     vector<vector<int>> root, graph;
-    LCA(vector<vector<int>> g) : n(g.size()), dist(n, inf), graph(g) {
-        int k = 2 * n;
-        while (k) d++, k /= 2;
+    LCA(int n) : n(n), dist(n, inf), graph(n) {
+        int k = n;
+        while (k /= 2) d++;
         root = vector<vector<int>>(d, vector<int>(n, -1));
-
+    }
+    void add_edge(int a, int b) {
+        graph[a].push_back(b);
+        graph[b].push_back(a);
+    }
+    void calc() {
         dist[0] = 0, dfs(0);
         for (int i = 0; i < d - 1; i++) {
             for (int j = 0; j < n; j++) {
@@ -71,7 +73,7 @@ struct LCA {
         if (dist[a] < dist[b]) swap(a, b);
         int diff = dist[a] - dist[b];
         for (int i = 0; i < d; i++) {
-            if ((1 << i) & diff) a = root[i][b];
+            if ((1 << i) & diff) a = root[i][a];
         }
         for (int i = d - 1; i >= 0; i--) {
             if (root[i][a] != root[i][b]) {
