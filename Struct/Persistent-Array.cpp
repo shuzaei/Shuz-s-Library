@@ -25,15 +25,11 @@ template <class T> struct Array {
     }
     void set(ll index, ll val, ll version = -1) {
         ll id, par = nodes.size(), left = 0, right = n;
-        if (version == -1) {
-            id = versions.back();
-            version = versions.size() - 1;
-        } else {
-            id = versions[version];
-        }
+        if (version < 0) version += versions.size();
+        id = versions[version];
+
         versions.push_back(par);
         prev_versions.push_back(version);
-        if (right == -1) right = n;
         rep(i, depth) {
             ll mid = (left + right) / 2;
             if (index < mid) {
@@ -50,11 +46,9 @@ template <class T> struct Array {
     }
     T get(ll index, ll version = -1) {
         ll id, left = 0, right = n;
-        if (version == -1) {
-            id = versions.back();
-        } else {
-            id = versions[version];
-        }
+        if (version < 0) version += versions.size();
+        id = versions[version];
+
         rep(i, depth) {
             ll mid = (left + right) / 2;
             if (index < mid) {

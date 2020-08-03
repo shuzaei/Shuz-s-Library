@@ -47,7 +47,4 @@ struct mint {
         return os;
     }
 };
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wliteral-suffix"
-mint operator"" M(const ull n) { return mint(n); }
-#pragma GCC diagnostic pop
+mint operator""_M(const ull n) { return mint(n); }

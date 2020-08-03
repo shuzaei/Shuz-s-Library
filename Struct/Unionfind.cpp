@@ -30,6 +30,36 @@ struct UFP {
     }
 };
 
+struct UFA {
+    Array<ll> data;
+    vector<ll> versions;
+    UFA() : data(1 << 18, -1) { versions.push_back(0); }
+    ll root(ll x, ll ver) {
+        if (data.get(x, versions[ver]) < 0)
+            return x;
+        else {
+            data.set(x, root(data.get(x, versions[ver]), ver), versions[ver]);
+            versions[ver] = data.versions.size() - 1;
+            return data.get(x, versions[ver]);
+        }
+    }
+    bool unite(ll x, ll y, ll ver) {
+        ll root_x = root(x, ver), root_y = root(y, ver);
+        if (root_x != root_y) {
+            ll dx = data.get(root_x), dy = data.get(root_y);
+            if (dx > dy) swap(root_x, root_y), swap(dx, dy);
+            data.set(root_x, dx - (dx == dy));
+            data.set(root_y, root_x);
+            versions.push_back(data.versions.size() - 1);
+            return true;
+        } else {
+            versions.push_back(data.versions.size() - 1);
+            return false;
+        }
+    }
+    bool same(ll x, ll y, ll ver) { return root(x, ver) == root(y, ver); }
+};
+
 struct UFW {
     vector<ll> par, dist;
     UFW(ll N) : par(N, -1), dist(N) {}
