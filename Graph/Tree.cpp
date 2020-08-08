@@ -19,8 +19,9 @@ struct tree {
     }
     void dfs_sub(int v = 0, int p = -1) {
         ls[v] = t++;
-        for (int u : G[v])
+        for (int u : G[v]) {
             if (u != p) dfs_sub(u, v);
+        }
         rs[v] = t;
     }
     void dfs_path(int v = 0, int p = -1) {
