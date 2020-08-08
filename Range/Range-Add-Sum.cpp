@@ -26,7 +26,6 @@ struct RASQ {
         if (b <= l || r <= a) return 0;
         eval(i, l, r);
         if (a <= l && r <= b) return node[i];
-        return sum(a, b, i * 2 + 1, l, (l + r) / 2) +
-               sum(a, b, i * 2 + 2, (l + r) / 2, r);
+        return sum(a, b, i * 2 + 1, l, (l + r) / 2) + sum(a, b, i * 2 + 2, (l + r) / 2, r);
     }
 };

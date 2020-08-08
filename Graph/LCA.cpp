@@ -29,9 +29,7 @@ struct LCA {
         ll diff = dist[A] - dist[B];
         rep(i, 30) if ((1 << i) & diff) A = root[i][A];
         dec(i, 29, 0) {
-            if (root[i][A] != root[i][B]) {
-                A = root[i][A], B = root[i][B];
-            }
+            if (root[i][A] != root[i][B]) A = root[i][A], B = root[i][B];
         }
         if (A != B) A = root[0][A], B = root[0][B];
         return A;
@@ -76,9 +74,7 @@ struct LCA {
             if ((1 << i) & diff) a = root[i][a];
         }
         for (int i = d - 1; i >= 0; i--) {
-            if (root[i][a] != root[i][b]) {
-                a = root[i][a], b = root[i][b];
-            }
+            if (root[i][a] != root[i][b]) { a = root[i][a], b = root[i][b]; }
         }
         if (a != b) a = root[0][a], b = root[0][b];
         return a;
