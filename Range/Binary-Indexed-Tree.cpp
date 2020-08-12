@@ -4,7 +4,7 @@ struct BIT {
     BIT() {}
     BIT(ll n) : data(n + 1) {
         fill(data.begin(), data.end(), 0);
-        data[0] = N;
+        data[0] = n;
     }
 
     void add(ll pos, ll val) {
