@@ -2,12 +2,13 @@ struct BIT {
     vector<ll> data;
 
     BIT() {}
-    BIT(ll N) : data(N + 1) {
+    BIT(ll n) : data(n + 1) {
         fill(data.begin(), data.end(), 0);
         data[0] = N;
     }
 
     void add(ll pos, ll val) {
+        pos++;
         while (pos <= data[0]) {
             data[pos] += val;
             pos += pos & -pos;
