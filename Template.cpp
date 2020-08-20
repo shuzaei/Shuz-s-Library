@@ -1,13 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#pragma region template
+
 // Define
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
 template <class T> using pvector = vector<pair<T, T>>;
-template <class T>
-using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
+template <class T> using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
 constexpr const ll dx[4] = {1, 0, -1, 0};
 constexpr const ll dy[4] = {0, 1, 0, -1};
 constexpr const ll MOD = 1e9 + 7;
@@ -34,20 +35,22 @@ constexpr const char sp = ' ';
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
 bool __DIRECTED__ = true;
+bool __ZERO_INDEXED__ = false;
 istream &operator>>(istream &is, graph &g) {
     ll a, b;
     is >> a >> b;
-    g[a - 1].pb(b - 1);
-    if (__DIRECTED__ == false) g[b - 1].pb(a - 1);
+    if (__ZERO_INDEXED__ == false) a--, b--;
+    g[a].pb(b);
+    if (__DIRECTED__ == false) g[b].pb(a);
     return is;
 }
-
 template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
     ll a, b;
     T c;
     is >> a >> b >> c;
-    g[a - 1].pb({b - 1, c});
-    if (__DIRECTED__ == false) g[b - 1].pb({a - 1, c});
+    if (__ZERO_INDEXED__ == false) a--, b--;
+    g[a].pb({b, c});
+    if (__DIRECTED__ == false) g[b].pb({a, c});
     return is;
 }
 
@@ -67,42 +70,39 @@ template <class T> bool chmin(T &a, const T &b) {
 }
 
 // Debug
-#define debug(...)                                                             \
-    {                                                                          \
-        cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                     \
-        for (auto &&X : {__VA_ARGS__}) cerr << "[" << X << "] ";               \
-        cerr << rt;                                                            \
+#define debug(...)                                                                                 \
+    {                                                                                              \
+        cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                                         \
+        for (auto &&__i : {__VA_ARGS__}) cerr << "[" << __i << "] ";                               \
+        cerr << rt;                                                                                \
     }
 
-#define dump(a, h, w)                                                          \
-    {                                                                          \
-        cerr << __LINE__ << ": " << #a << " = [" << rt;                        \
-        rep(_i, h) {                                                           \
-            rep(_j, w) {                                                       \
-                if (abs(a[_i][_j]) >= INF / 2 and a[_i][_j] <= -INF / 2)       \
-                    cerr << '-';                                               \
-                if (abs(a[_i][_j]) >= INF / 2)                                 \
-                    cerr << "∞" << sp;                                         \
-                else                                                           \
-                    cerr << a[_i][_j] << sp;                                   \
-            }                                                                  \
-            cerr << rt;                                                        \
-        }                                                                      \
-        cerr << "]" << rt;                                                     \
+#define dump(a, h, w)                                                                              \
+    {                                                                                              \
+        cerr << __LINE__ << ": " << #a << " = [" << rt;                                            \
+        rep(__i, h) {                                                                              \
+            rep(__j, w) {                                                                          \
+                if (abs(a[__i][__j]) >= INF / 2 and a[__i][__j] <= -INF / 2) cerr << '-';          \
+                if (abs(a[__i][__j]) >= INF / 2) cerr << "∞" << sp;                                \
+                else                                                                               \
+                    cerr << a[__i][__j] << sp;                                                     \
+            }                                                                                      \
+            cerr << rt;                                                                            \
+        }                                                                                          \
+        cerr << "]" << rt;                                                                         \
     }
 
-#define vdump(a, n)                                                            \
-    {                                                                          \
-        cerr << __LINE__ << ": " << #a << " = [";                              \
-        rep(_i, n) {                                                           \
-            if (_i) cerr << sp;                                                \
-            if (abs(a[_i]) >= INF / 2 and a[_i] <= -INF / 2) cerr << '-';      \
-            if (abs(a[_i]) >= INF / 2)                                         \
-                cerr << "∞" << sp;                                             \
-            else                                                               \
-                cerr << a[_i];                                                 \
-        }                                                                      \
-        cerr << "]" << rt;                                                     \
+#define vdump(a, n)                                                                                \
+    {                                                                                              \
+        cerr << __LINE__ << ": " << #a << " = [";                                                  \
+        rep(__i, n) {                                                                              \
+            if (__i) cerr << sp;                                                                   \
+            if (abs(a[__i]) >= INF / 2 and a[__i] <= -INF / 2) cerr << '-';                        \
+            if (abs(a[__i]) >= INF / 2) cerr << "∞" << sp;                                         \
+            else                                                                                   \
+                cerr << a[__i];                                                                    \
+        }                                                                                          \
+        cerr << "]" << rt;                                                                         \
     }
 
 // Loop
@@ -117,14 +117,18 @@ struct io {
     io() { cin.tie(nullptr), ios::sync_with_stdio(false); }
 } io;
 
+///*
 // Speed
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunknown-pragmas"
 #pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target(                                                            \
-    "sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,tune=native,arch=skylake-avx512")
+#pragma GCC target(                                                                                \
+    "sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native,arch=skylake-avx512")
+#pragma GCC diagnostic pop
+//*/
+
 // Math
-inline constexpr ll gcd(const ll a, const ll b) {
-    return b ? gcd(b, a % b) : a;
-}
+inline constexpr ll gcd(const ll a, const ll b) { return b ? gcd(b, a % b) : a; }
 inline constexpr ll lcm(const ll a, const ll b) { return a / gcd(a, b) * b; }
 
 inline constexpr ll modulo(const ll n, const ll m = MOD) {
@@ -156,3 +160,7 @@ inline ll inv(const ll n, const ll m = MOD) {
     }
     return modulo(x, m);
 }
+
+#pragma endregion
+
+signed main() {}

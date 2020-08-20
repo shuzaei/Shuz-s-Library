@@ -25,8 +25,7 @@ struct UFP {
     bool same(ll x, ll y, ll t) { return root(x, t) == root(y, t); }
     ll size(ll x, ll t, bool rooted = true) {
         if (rooted) x = root(x, t);
-        return (--lower_bound(__size[x].begin(), __size[x].end(), P(t, 0)))
-            ->second;
+        return (--lower_bound(__size[x].begin(), __size[x].end(), P(t, 0)))->second;
     }
 };
 
@@ -35,8 +34,7 @@ struct UFA {
     vector<ll> versions;
     UFA() : data(1 << 18, -1) { versions.push_back(0); }
     ll root(ll x, ll ver) {
-        if (data.get(x, versions[ver]) < 0)
-            return x;
+        if (data.get(x, versions[ver]) < 0) return x;
         else {
             data.set(x, root(data.get(x, versions[ver]), ver), versions[ver]);
             versions[ver] = data.versions.size() - 1;
@@ -92,7 +90,7 @@ struct UFW {
     ll size(ll x) { return -par[root(x)]; }
     ll size() {
         ll cnt = 0;
-        rep(i, data.size()) if (i == root(i)) cnt++;
+        rep(i, par.size()) if (i == root(i)) cnt++;
         return cnt;
     }
 };
@@ -101,8 +99,7 @@ struct UFS {
     vector<ll> data;
     UFS(ll N) : data(N, -1) {}
     ll root(ll x) {
-        if (data[x] < 0)
-            return x;
+        if (data[x] < 0) return x;
         else
             return data[x] = root(data[x]);
     }
@@ -130,8 +127,7 @@ struct UFR {
     vector<ll> data;
     UFR(ll N) : data(N, -1) {}
     ll root(ll x) {
-        if (data[x] < 0)
-            return x;
+        if (data[x] < 0) return x;
         else
             return data[x] = root(data[x]);
     }
