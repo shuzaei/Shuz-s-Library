@@ -1,7 +1,7 @@
 const ll mo = 1e9 + 7;
 struct mint {
     ll x;
-    mint(ll x = 0) : x((x % mo + mo) % mo) {}
+    mint(ll n = 0) : x((n % mo + mo) % mo) {}
     mint operator-() const { return mint(-x); }
     mint &operator+=(const mint &a) {
         if ((x += a.x) >= mo) x -= mo;
