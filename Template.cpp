@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+//#pragma GCC target("arch=skylake-avx512")
 
 #pragma region template
 
@@ -31,6 +32,7 @@ constexpr const char sp = ' ';
 #define fi first
 #define se second
 #define uniq(x) (sort(all(x)), (x).erase(unique(all(x)), (x).end()))
+#define num(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
 
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
@@ -117,15 +119,9 @@ struct io {
     io() { cin.tie(nullptr), ios::sync_with_stdio(false); }
 } io;
 
-///*
 // Speed
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
 #pragma GCC optimize("Ofast,unroll-loops")
-#pragma GCC target(                                                                                \
-    "sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native,arch=skylake-avx512")
-#pragma GCC diagnostic pop
-//*/
 
 // Math
 inline constexpr ll gcd(const ll a, const ll b) { return b ? gcd(b, a % b) : a; }
