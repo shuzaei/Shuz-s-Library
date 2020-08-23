@@ -3,7 +3,7 @@ struct LCA {
     vector<ll> dist;
     vector<vector<ll>> root, graph;
     LCA(ll n) : n(n), dist(n, inf), graph(n) {
-        ll k = n + 1;
+        ll k = 2 * n;
         while (k /= 2) d++;
         root = vector<vector<ll>>(d, vector<ll>(n, -1));
     }
