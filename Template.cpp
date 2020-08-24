@@ -35,7 +35,7 @@ constexpr const char sp = ' ';
 #define bis(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
 
 using graph = vector<vector<ll>>;
-template <class T> using wgraph = vector<vector<ll, T>>;
+template <class T> using wgraph = vector<vector<pair << ll, T>>> ;
 bool __DIRECTED__ = true;
 bool __ZERO_INDEXED__ = false;
 istream &operator>>(istream &is, graph &g) {
