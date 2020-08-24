@@ -32,7 +32,7 @@ constexpr const char sp = ' ';
 #define fi first
 #define se second
 #define uniq(x) (sort(all(x)), (x).erase(unique(all(x)), (x).end()))
-#define num(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
+#define bis(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
 
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<ll, T>>;
