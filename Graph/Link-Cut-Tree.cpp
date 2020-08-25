@@ -44,7 +44,7 @@ struct link_cut_tree {
     void cut(node *c) {
         expose(c);
         node *p = c->lp;
-        c->lp = nullptr, p->pp = nullptr;
+        c->lp = p->pp = nullptr;
     }
     void link(node *c, node *p) { expose(c), expose(p), c->pp = p, p->rp = c; }
 };
