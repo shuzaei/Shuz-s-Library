@@ -53,6 +53,7 @@ struct link_cut_tree {
     node *get_root(node *x) {
         expose(x);
         while (x->lp != nullptr) x = x->lp;
+        x->splay();
         return x;
     }
     node *lca(node *u, node *v) {
