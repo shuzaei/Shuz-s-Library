@@ -27,13 +27,9 @@ struct link_cut_tree {
                 else {
                     node *r = q->pp;
                     if (r->lp == q) {
-                        if (q->lp == this) q->rotr(), rotr();
-                        else
-                            rotl(), rotr();
+                        q->lp == this ? q->rotr() : rotl(), rotr();
                     } else {
-                        if (q->lp == this) q->rotl(), rotl();
-                        else
-                            rotr(), rotl();
+                        q->lp == this ? q->rotl() : rotr, rotl();
                     }
                 }
             }
