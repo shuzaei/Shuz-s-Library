@@ -58,5 +58,5 @@ struct link_cut_tree {
     node *lca(node *u, node *v) {
         return get_root(u) == get_root(v) ? (expose(u), expose(v)) : nullptr;
     }
-    node *make_node(ll idx) { return new node(idx); }
+    node *make_node(ll idx = 0, ll val = 0) { return new node(idx, val); }
 } lct;
