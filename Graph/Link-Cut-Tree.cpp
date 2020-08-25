@@ -36,9 +36,10 @@ struct link_cut_tree {
         }
     };
     node *expose(node *x) {
-        for (node *p = x, *rp = NULL; p != NULL; p = p->pp) p->splay(), p->rp = rp, rp = p;
+        node *rp = NULL;
+        for (node *p = x; p != NULL; p = p->pp) p->splay(), p->rp = rp, rp = p;
         x->splay();
-        return x;
+        return rp;
     }
     void cut(node *c) {
         expose(c);
