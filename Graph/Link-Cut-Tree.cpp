@@ -29,7 +29,7 @@ struct link_cut_tree {
                     if (r->lp == q) {
                         q->lp == this ? q->rotr() : rotl(), rotr();
                     } else {
-                        q->lp == this ? q->rotl() : rotr, rotl();
+                        q->lp == this ? q->rotl() : rotr(), rotl();
                     }
                 }
             }
