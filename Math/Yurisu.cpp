@@ -1,8 +1,9 @@
 struct Yurisu {
     ll a, b;
     Yurisu(ll x = 0, ll y = 1) : a(x), b(y) {
-        ll g = gcd(a, b) * (b >= 0 ? 1 : -1);
+        ll g = gcd(abs(a), abs(b)) * (b < 0 ? -1 : 1);
         a /= g, b /= g;
+        if (b == 0) a = 1;
     }
     Yurisu operator-() const { return Yurisu(-a, b); }
     Yurisu &operator+=(const Yurisu &c) { return *this = Yurisu(a * c.b + b * c.a, b * c.b); }
