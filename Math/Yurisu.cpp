@@ -1,7 +1,7 @@
 struct Yurisu {
     ll a, b;
     Yurisu(ll x = 0, ll y = 1) : a(x), b(y) {
-        ll g = gcd(a, b);
+        ll g = gcd(a, b) * (b >= 0 ? 1 : -1);
         a /= g, b /= g;
     }
     Yurisu operator-() const { return Yurisu(-a, b); }
@@ -19,4 +19,15 @@ struct Yurisu {
     Yurisu inv() const { return Yurisu(b, a); }
     Yurisu &operator/=(Yurisu c) { return (*this) *= c.inv(); }
     Yurisu operator/(Yurisu c) const { return Yurisu(*this) /= c; }
+
+    friend istream &operator>>(istream &is, Yurisu &a) {
+        ll x, y;
+        is >> x >> y;
+        a = Yurisu(x, y);
+        return is;
+    }
+    friend ostream &operator<<(ostream &os, Yurisu a) {
+        os << a.a << '/' << a.b;
+        return os;
+    }
 };
