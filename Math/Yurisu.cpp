@@ -2,6 +2,7 @@ struct Yurisu {
     ll a, b;
     Yurisu(ll x = 0, ll y = 1) : a(x), b(y) {
         ll g = gcd(a, b);
+        if (g == 0) raise(SIGFPE);
         a /= g, b /= g;
     }
     Yurisu operator-() const { return Yurisu(-a, b); }
