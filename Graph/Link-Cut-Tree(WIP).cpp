@@ -51,7 +51,7 @@ struct link_cut_tree {
     }
     node *expose(node *x) {
         node *rp = nullptr;
-        for (node *p = x; p != nullptr; p = p->pp) splay(p), p->rp = rp, update(p), rp = p;
+        for (node *p = x; p != nullptr; p = p->pp) splay(p), p->rp = rp, rp = p, update(p);
         splay(x);
         return rp;
     }
