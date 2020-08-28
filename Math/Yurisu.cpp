@@ -3,7 +3,8 @@ struct Yurisu {
     Yurisu(ll x = 0, ll y = 1) : a(x), b(y) {
         ll g = gcd(abs(a), abs(b)) * (b < 0 ? -1 : 1);
         a /= g, b /= g;
-        if (b == 0) a = 1;
+        // if (b == 0) a = 1;
+        // inf と -inf を同一視したくない場合は消す
     }
     Yurisu operator-() const { return Yurisu(-a, b); }
     Yurisu inv() const { return Yurisu(b, a); }
