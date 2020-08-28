@@ -22,9 +22,12 @@ struct Yurisu {
     Yurisu operator/(Yurisu c) const { return Yurisu(*this) /= c; }
 
     friend istream &operator>>(istream &is, Yurisu &a) {
-        ll x, y;
-        is >> x >> y;
-        a = Yurisu(x, y);
+        string x;
+        ll y = 1;
+        is >> x;
+        auto iter = find(x.begin(), x.end(), '.');
+        for (auto i = iter + 1; i != x.end(); i++) y *= 10;
+        x.erase(iter), a = Yurisu(stol(x), y);
         return is;
     }
     friend ostream &operator<<(ostream &os, Yurisu a) {
