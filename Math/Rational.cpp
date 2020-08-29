@@ -20,10 +20,10 @@ struct Rational {
     Rational operator/(const Rational &a) const { return Rational(*this) /= a; }
     bool operator==(const Rational &a) const { return n == a.n and d == a.d; }
     bool operator!=(const Rational &a) const { return n != a.n or d != a.d; }
-    bool operator<=(const Rational &a) { return n * a.d <= d * a.n; }
-    bool operator<(const Rational &a) { return n * a.d < d * a.n; }
-    friend Int rtoi(Rational &a) { return a.n / a.d; }
-    friend Double rtod(Rational &a) { return Double(a.n) / Double(a.d); }
+    bool operator<=(const Rational &a) const { return n * a.d <= d * a.n; }
+    bool operator<(const Rational &a) const { return n * a.d < d * a.n; }
+    friend Int rtoi(const Rational &a) { return a.n / a.d; }
+    friend Double rtod(const Rational &a) { return Double(a.n) / Double(a.d); }
     friend istream &operator>>(istream &is, Rational &a) {
         string x;
         is >> x;
@@ -37,7 +37,7 @@ struct Rational {
         a = Rational(stol(x), y);
         return is;
     }
-    friend ostream &operator<<(ostream &os, Rational a) {
+    friend ostream &operator<<(ostream &os, const Rational &a) {
         os << a.n << '/' << a.d;
         return os;
     }
