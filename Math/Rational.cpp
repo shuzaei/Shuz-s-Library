@@ -22,6 +22,7 @@ struct Rational {
     bool operator!=(const Rational &a) const { return n != a.n or d != a.d; }
     bool operator<=(const Rational &a) const { return n * a.d <= d * a.n; }
     bool operator<(const Rational &a) const { return n * a.d < d * a.n; }
+    friend Rational abs(const Rational &a) { return Rational(abs(a.n), a.d); }
     friend Int rtoi(const Rational &a) { return a.n / a.d; }
     friend Double rtod(const Rational &a) { return Double(a.n) / Double(a.d); }
     friend istream &operator>>(istream &is, Rational &a) {
