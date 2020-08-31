@@ -23,7 +23,7 @@ struct HLD {
         out[v] = t;
     }
     int lca(int u, int v) {
-        while (true {
+        while (true) {
             if (in[u] > in[v]) swap(u, v);
             if (nxt[u] == nxt[v]) return u;
             v = par[nxt[v]];
