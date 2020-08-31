@@ -30,7 +30,7 @@ struct HLD {
         }
         return in[u] > in[v] ? v : u;
     }
-    void calc() { dfs_sz(), dfs_hld(); }
+    void calc() { dfs_sz(), t = 0, dfs_hld(); }
     void path_query(int u, int v) {
         while (nxt[u] != nxt[v]) {
             if (in[u] > in[v]) swap(u, v);
