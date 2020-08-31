@@ -46,7 +46,7 @@ struct SCC {
         new_graph.resize(new_num);
         for (ll i = 0; i < num; i++)
             for (ll j : graph[i]) new_add_edge(i, j);
-        for (vector<ll> g : new_graph) {
+        for (vector<ll> &g : new_graph) {
             sort(g.begin(), g.end());
             g.erase(unique(g.begin(), g.end()), g.end());
         }
