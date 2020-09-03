@@ -6,8 +6,6 @@ struct Rational {
         Int g = gcd(abs(n), abs(d));
         if (d < 0) g *= -1;
         n /= g, d /= g;
-        // if (d == 0) n = 1;
-        // inf と -inf を同一視したくない場合は消す
     }
     Rational operator-() const { return Rational(-n, d); }
     Rational &operator+=(const Rational &a) { return *this = Rational(n * a.d + d * a.n, d * a.d); }
