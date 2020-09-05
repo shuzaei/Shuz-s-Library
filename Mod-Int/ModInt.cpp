@@ -47,4 +47,4 @@ struct mint {
         return os;
     }
 };
-mint operator""_M(const ull n) { return mint(n); }
+mint operator"" M(const ull n) { return mint(n); }
