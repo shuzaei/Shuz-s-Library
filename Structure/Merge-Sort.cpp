@@ -1,10 +1,9 @@
 struct msort {
-    void merge(vector<ll>::iterator left, vector<ll>::iterator mid,
-               vector<ll>::iterator right) {
+    void merge(vector<ll>::iterator left, vector<ll>::iterator mid, vector<ll>::iterator right) {
         vector<ll>::iterator iter = left, i1 = left, i2 = mid;
         vector<ll> v;
         while (i1 != mid && i2 != right) {
-            if (*i1 < *i2) {
+            if (*i1 < *i2) { // 狭義単調増加の場合は <=
                 v.push_back(*i1), i1++;
             } else {
                 v.push_back(*i2), i2++;
