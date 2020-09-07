@@ -47,7 +47,7 @@ struct Eular_Tour {
     int t;
     vector<int> ls, rs, ds, us;
     graph g;
-    Eular_Tour(int n) : ls(n), rs(n), ds(n), us(n), g(n) {}
+    Eular_Tour(int n) : ls(n), rs(n), ds(n), us(n), g(n), t(0) {}
     void dfs_subtree(int v = 0, int p = -1) {
         ls[v] = t++;
         for (int u : g[v]) {
