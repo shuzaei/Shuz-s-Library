@@ -50,14 +50,14 @@ struct Eular_Tour {
     Eular_Tour(int n) : ls(n), rs(n), ds(n), us(n), g(n) {}
     void dfs_subtree(int v = 0, int p = -1) {
         ls[v] = t++;
-        for (int u : G[v]) {
+        for (int u : g[v]) {
             if (u != p) dfs_subtree(u, v);
         }
         rs[v] = t;
     }
     void dfs_path(int v = 0, int p = -1) {
         ds[v] = t++;
-        for (int u : G[v]) {
+        for (int u : g[v]) {
             if (u == p) continue;
             dfs_path(u, v);
         }
