@@ -10,7 +10,7 @@ struct RASQ {
         }
         lazy[i] = 0;
     }
-    inline void add(ll a, ll b, ll x, ll i = 0, ll l = 0, ll r = 1LL << 20) {
+    inline void add(ll a, ll b, ll x, ll i = 0, ll l = 0, ll r = n) {
         eval(i, l, r);
         if (b <= l || r <= a) return;
         if (a <= l && r <= b) {
@@ -22,7 +22,7 @@ struct RASQ {
             node[i] = node[i * 2 + 1] + node[i * 2 + 2];
         }
     }
-    inline ll sum(ll a, ll b, ll i = 0, ll l = 0, ll r = 1LL << 20) {
+    inline ll sum(ll a, ll b, ll i = 0, ll l = 0, ll r = n) {
         if (b <= l || r <= a) return 0;
         eval(i, l, r);
         if (a <= l && r <= b) return node[i];

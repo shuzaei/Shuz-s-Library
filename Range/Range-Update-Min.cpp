@@ -13,7 +13,7 @@ struct RUMQ {
             flag[i] = false;
         }
     }
-    inline void update(ll a, ll b, ll x, ll i = 0, ll l = 0, ll r = 1LL << 20) {
+    inline void update(ll a, ll b, ll x, ll i = 0, ll l = 0, ll r = n) {
         eval(i, l, r);
         if (b <= l || r <= a) return;
         if (a <= l && r <= b) {
@@ -26,11 +26,10 @@ struct RUMQ {
             node[i] = std::min(node[i * 2 + 1], node[i * 2 + 2]);
         }
     }
-    inline ll min(ll a, ll b, ll i = 0, ll l = 0, ll r = 1LL << 20) {
+    inline ll min(ll a, ll b, ll i = 0, ll l = 0, ll r = n) {
         if (b <= l || r <= a) return INF;
         eval(i, l, r);
         if (a <= l && r <= b) return node[i];
-        return std::min(min(a, b, i * 2 + 1, l, (l + r) / 2),
-                        min(a, b, i * 2 + 2, (l + r) / 2, r));
+        return std::min(min(a, b, i * 2 + 1, l, (l + r) / 2), min(a, b, i * 2 + 2, (l + r) / 2, r));
     }
 };
