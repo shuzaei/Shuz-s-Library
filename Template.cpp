@@ -40,7 +40,7 @@ constexpr const char sp = ' ';
 #define bis(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
 
 using graph = vector<vector<ll>>;
-template <class T> using wgraph = vector<vector<pair << ll, T>>> ;
+template <class T> using wgraph = vector<vector<pair<ll, T>>>;
 bool __DIRECTED__ = true;
 bool __ZERO_INDEXED__ = false;
 istream &operator>>(istream &is, graph &g) {
@@ -84,17 +84,48 @@ template <class T> bool chmin(T &a, const T &b) {
         cerr << rt;                                                                                \
     }
 
+#define dumpi(a, h, w)                                                                             \
+    {                                                                                              \
+        cerr << __LINE__ << ": " << #a << " = [" << rt;                                            \
+        rep(__i, h) {                                                                              \
+            if (__i) cerr << ", ";                                                                 \
+            cerr << "[";                                                                           \
+            rep(__j, w) {                                                                          \
+                if (__j) cerr << ", ";                                                             \
+                if (abs(a[__i][__j]) >= INF / 2 and a[__i][__j] <= -INF / 2) cerr << '-';          \
+                if (abs(a[__i][__j]) >= INF / 2) cerr << "∞";                                      \
+                else                                                                               \
+                    cerr << a[__i][__j];                                                           \
+            }                                                                                      \
+            cerr << "]" << rt;                                                                     \
+        }                                                                                          \
+        cerr << "]" << rt;                                                                         \
+    }
+
+#define vdumpi(a, n)                                                                               \
+    {                                                                                              \
+        cerr << __LINE__ << ": " << #a << " = [";                                                  \
+        rep(__i, n) {                                                                              \
+            if (__i) cerr << ", ";                                                                 \
+            if (abs(a[__i]) >= INF / 2 and a[__i] <= -INF / 2) cerr << '-';                        \
+            if (abs(a[__i]) >= INF / 2) cerr << "∞";                                               \
+            else                                                                                   \
+                cerr << a[__i];                                                                    \
+        }                                                                                          \
+        cerr << "]" << rt;                                                                         \
+    }
+
 #define dump(a, h, w)                                                                              \
     {                                                                                              \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                                            \
         rep(__i, h) {                                                                              \
+            if (__i) cerr << ", ";                                                                 \
+            cerr << "[";                                                                           \
             rep(__j, w) {                                                                          \
-                if (abs(a[__i][__j]) >= INF / 2 and a[__i][__j] <= -INF / 2) cerr << '-';          \
-                if (abs(a[__i][__j]) >= INF / 2) cerr << "∞" << sp;                                \
-                else                                                                               \
-                    cerr << a[__i][__j] << sp;                                                     \
+                if (__j) cerr << ", ";                                                             \
+                cerr << a[__i][__j];                                                               \
             }                                                                                      \
-            cerr << rt;                                                                            \
+            cerr << "]";                                                                           \
         }                                                                                          \
         cerr << "]" << rt;                                                                         \
     }
@@ -103,14 +134,12 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                                              \
         cerr << __LINE__ << ": " << #a << " = [";                                                  \
         rep(__i, n) {                                                                              \
-            if (__i) cerr << sp;                                                                   \
-            if (abs(a[__i]) >= INF / 2 and a[__i] <= -INF / 2) cerr << '-';                        \
-            if (abs(a[__i]) >= INF / 2) cerr << "∞" << sp;                                         \
-            else                                                                                   \
-                cerr << a[__i];                                                                    \
+            if (__i) cerr << ", ";                                                                 \
+            cerr << a[__i];                                                                        \
         }                                                                                          \
         cerr << "]" << rt;                                                                         \
     }
+
 istream &operator>>(istream &is, pair<ll, ll> &p) {
     is >> p.first >> p.second;
     return is;
