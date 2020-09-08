@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-//#pragma GCC target("arch=skylake-avx512")
+// #pragma GCC target("arch=skylake-avx512")
+// export CPLUS_INCLUDE_PATH="/Users/shuzaei/Desktop/ac-library"
+// /usr/bin/env python3 "/Users/shuzaei/Desktop/ac-library/expander.py"
+// /Users/shuzaei/Desktop/Solve.cpp
+#include <atcoder/all>
+using namespace atcoder;
 
 #pragma region template
 
