@@ -4,7 +4,7 @@ struct BipartiteGraph {
     vector<ll> match;
     vector<bool> used;
     BipartiteGraph(ll N) : V(N), G(N), match(N), used(N) {}
-    void addEdge(ll i, ll j) {
+    void add_edge(ll i, ll j) {
         G[i].push_back(j);
         G[j].push_back(i);
     }
