@@ -106,6 +106,14 @@ template <class T> bool chmin(T &a, const T &b) {
         }                                                                                          \
         cerr << "]" << rt;                                                                         \
     }
+istream &operator>>(istream &is, pair<ll, ll> &p) {
+    is >> p.first >> p.second;
+    return is;
+}
+ostream &operator<<(ostream &os, const pair<ll, ll> &p) {
+    os << p.first << ' ' << p.second;
+    return os;
+}
 
 // Loop
 #define inc(i, a, n) for (ll i = (a), _##i = (n); i <= _##i; ++i)
