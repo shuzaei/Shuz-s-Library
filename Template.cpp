@@ -99,7 +99,7 @@ template <class T> bool chmin(T &a, const T &b) {
             }                                                                                      \
             cerr << "]" << rt;                                                                     \
         }                                                                                          \
-        cerr << "]" << rt;                                                                         \
+        cerr << "\n]" << rt;                                                                       \
     }
 
 #define vdumpi(a, n)                                                                               \
@@ -127,7 +127,7 @@ template <class T> bool chmin(T &a, const T &b) {
             }                                                                                      \
             cerr << "]";                                                                           \
         }                                                                                          \
-        cerr << "]" << rt;                                                                         \
+        cerr << "\n]" << rt;                                                                       \
     }
 
 #define vdump(a, n)                                                                                \
