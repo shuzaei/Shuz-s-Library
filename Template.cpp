@@ -88,7 +88,7 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                                              \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                                            \
         rep(__i, h) {                                                                              \
-            if (__i) cerr << ", ";                                                                 \
+            if (__i) cerr << ",\n";                                                                \
             cerr << "[";                                                                           \
             rep(__j, w) {                                                                          \
                 if (__j) cerr << ", ";                                                             \
@@ -119,7 +119,7 @@ template <class T> bool chmin(T &a, const T &b) {
     {                                                                                              \
         cerr << __LINE__ << ": " << #a << " = [" << rt;                                            \
         rep(__i, h) {                                                                              \
-            if (__i) cerr << ", ";                                                                 \
+            if (__i) cerr << ",\n";                                                                \
             cerr << "[";                                                                           \
             rep(__j, w) {                                                                          \
                 if (__j) cerr << ", ";                                                             \
