@@ -23,6 +23,7 @@ struct BIT {
         }
         return res;
     }
+    ll sum(ll l, ll r) { return sum(r) - sum(l); }
 
     ll lower_bound(ll val) {
         if (val <= 0) return 0;
