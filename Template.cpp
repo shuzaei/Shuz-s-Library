@@ -4,8 +4,8 @@ using namespace std;
 // export CPLUS_INCLUDE_PATH="/Users/shuzaei/Desktop/ac-library"
 // /usr/bin/env python3 "/Users/shuzaei/Desktop/ac-library/expander.py"
 // /Users/shuzaei/Desktop/Solve.cpp
-#include <atcoder/all>
-using namespace atcoder;
+//#include <atcoder/all>
+// using namespace atcoder;
 
 #pragma region template
 
@@ -97,7 +97,7 @@ template <class T> bool chmin(T &a, const T &b) {
                 else                                                                               \
                     cerr << a[__i][__j];                                                           \
             }                                                                                      \
-            cerr << "]" << rt;                                                                     \
+            cerr << "]";                                                                           \
         }                                                                                          \
         cerr << "\n]" << rt;                                                                       \
     }
@@ -140,11 +140,11 @@ template <class T> bool chmin(T &a, const T &b) {
         cerr << "]" << rt;                                                                         \
     }
 
-istream &operator>>(istream &is, pair<ll, ll> &p) {
+template <class S, class T> istream &operator>>(istream &is, pair<S, T> &p) {
     is >> p.first >> p.second;
     return is;
 }
-ostream &operator<<(ostream &os, const pair<ll, ll> &p) {
+template <class S, class T> ostream &operator<<(ostream &os, const pair<S, T> &p) {
     os << p.first << ' ' << p.second;
     return os;
 }
