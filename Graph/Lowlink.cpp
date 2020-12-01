@@ -24,4 +24,4 @@ struct Lowlink {
             return false;
         }
     }
-}
+};
