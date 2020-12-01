@@ -3,7 +3,7 @@ struct Lowlink {
     vector<int> ord, low;
     graph g;
     Lowlink(int n) : ord(n, -1), low(n), g(n), t(0) {}
-    void calc(int v = 0, p = -1) {
+    void calc(int v = 0, int p = -1) {
         ord[v] = low[v] = t++;
         for (auto &u : g[v]) {
             if (ord[u] == -1) {
