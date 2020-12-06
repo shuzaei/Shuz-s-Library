@@ -1,7 +1,7 @@
 struct Heap { // max
     vector<ll> heap;
     ll size = 0;
-    Heap(ll N) : heap(N) {}
+    Heap(ll n = 200000) : heap(n) {}
     void push(ll x) {
         ll i = size++;
         while (i > 0) {
@@ -18,9 +18,8 @@ struct Heap { // max
         ll i = 0;
         while (i * 2 + 1 < size) {
             ll left = i * 2 + 1, right = i * 2 + 2;
-            if (right < size && heap[right] > heap[left])
-                left = right;           // heap[right]<heap[left]
-            if (heap[left] <= x) break; //>=
+            if (right < size && heap[right] > heap[left]) left = right; // heap[right]<heap[left]
+            if (heap[left] <= x) break;                                 //>=
             heap[i] = heap[left];
             i = left;
         }
