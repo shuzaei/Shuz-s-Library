@@ -28,22 +28,30 @@ namespace sorting {
     }
 
     void heapsort(itr left, itr right) {
-        auto par = [&](itr x) { return left + (x - left - 1) / 2; };
         auto lch = [&](itr x) { return left + ((x - left) << 1) + 1; };
         auto rch = [&](itr x) { return left + ((x - left) << 1) + 2; };
 
-        for (itr i = right - 1; i != left; i--)
-            if (*i > *par(i)) swap(*i, *par(i));
-        for (itr i = right - 1; i != left; i--) {
+        for (itr i = right - 1; i >= left; i--) {
+            itr j = i;
+            while (true) {
+                itr l = lch(j), r = rch(j);
+                if (r < right and *l < *r) swap(l, r);
+                if (l < right and *j < *l) {
+                    swap(*j, *l), j = l;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        for (itr i = right - 1; i > left; i--) {
             itr j = left;
             swap(*i, *j);
             while (true) {
                 itr l = lch(j), r = rch(j);
-                if (*l < *r) swap(l, r);
+                if (r < i and *l < *r) swap(l, r);
                 if (l < i and *j < *l) {
                     swap(*j, *l), j = l;
-                } else if (rch(j) < i and *j < *rch(j)) {
-                    swap(*j, *r), j = r;
                 } else {
                     break;
                 }
