@@ -1,4 +1,4 @@
-struct msort {
+namespace msort {
     void merge(vector<ll>::iterator left, vector<ll>::iterator mid, vector<ll>::iterator right) {
         vector<ll>::iterator iter = left, i1 = left, i2 = mid;
         vector<ll> v;
@@ -25,4 +25,4 @@ struct msort {
         mergesort(mid, right);
         merge(left, mid, right);
     }
-};
+}; // namespace msort
