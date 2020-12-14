@@ -58,4 +58,23 @@ namespace sorting {
             }
         }
     }
+
+    random_device rnd;
+    mt19937_64 rndint(rnd());
+    ll rand_next(ll l, ll r) {
+        // [l, r)
+        return rndint() % (r - l) + l;
+    }
+
+    void quicksort(itr left, itr right) {
+        if (right <= left) return;
+        swap(*(left + rand_next(0, right - left)), *(right - 1));
+        itr r = right - 1;
+        for (itr l = left; l < r; l++) {
+            if (*l > *(right - 1)) swap(*(l--), *(--r));
+        }
+        swap(*r, *(right - 1));
+        quicksort(left, r);
+        quicksort(r + 1, right);
+    }
 }; // namespace sorting
