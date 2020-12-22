@@ -60,7 +60,7 @@ struct UFA {
 
 struct UFW {
     vector<ll> par, dist;
-    UFW(ll N) : par(N, -1), dist(N) {}
+    UFW(ll n) : par(n, -1), dist(n) {}
     ll root(ll x) {
         if (par[x] < 0) {
             return x;
@@ -97,7 +97,7 @@ struct UFW {
 
 struct UFS {
     vector<ll> data;
-    UFS(ll N) : data(N, -1) {}
+    UFS(ll n) : data(n, -1) {}
     ll root(ll x) {
         if (data[x] < 0) return x;
         else
@@ -125,7 +125,7 @@ struct UFS {
 
 struct UFR {
     vector<ll> data;
-    UFR(ll N) : data(N, -1) {}
+    UFR(ll n) : data(n, -1) {}
     ll root(ll x) {
         if (data[x] < 0) return x;
         else
