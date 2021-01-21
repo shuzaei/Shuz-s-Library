@@ -73,7 +73,7 @@ struct UFW {
     bool unite(ll x, ll y, ll w) {
         ll rx = root(x), ry = root(y);
         if (rx != ry) {
-            if (par[rx] > par[ry]) swap(rx, ry);
+            if (par[rx] > par[ry]) swap(rx, ry), swap(x, y), w = -w;
             par[rx] += par[ry];
             par[ry] = rx;
             dist[ry] = w + dist[x] - dist[y];
