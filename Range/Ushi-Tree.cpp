@@ -1,9 +1,7 @@
 struct UshiTree {
     using Type = ll;
     Type unit = 0;
-    function<Type(Type, Type)> comb = [](Type left, Type right) {
-        return left + right;
-    };
+    function<Type(Type, Type)> comb = [](Type left, Type right) { return left + right; };
 
     static const ll n = 1 << 20;
     vector<Type> node;
