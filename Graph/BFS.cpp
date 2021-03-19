@@ -46,7 +46,7 @@ struct Graph_2D {
             rep(i, 4) {
                 P next = make_pair(now.x + dx[i], now.y + dy[i]);
                 if (not(0 <= next.x and next.x < H and 0 <= next.y and next.y < W)) continue;
-                if (S[next.x][next.y] != '1' and dist[next.x][next.y] > dist[now.x][now.y] + 1) {
+                if (S[next.x][next.y] != '#' and dist[next.x][next.y] > dist[now.x][now.y] + 1) {
                     Q.push(next);
                     dist[next.x][next.y] = dist[now.x][now.y] + 1;
                 }
