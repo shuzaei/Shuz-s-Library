@@ -38,7 +38,7 @@ struct Graph_2D {
     Graph_2D(ll H, ll W) : H(H), W(W), dist(H, vector<ll>(W)) {}
     void bfs(P s) {
         queue<P> Q;
-        rep(i, H) rep(j, W) dist[i][j] = mod;
+        rep(i, H) rep(j, W) dist[i][j] = INF;
         Q.push(s), dist[s.x][s.y] = 0;
         while (!Q.empty()) {
             P now = Q.front();
