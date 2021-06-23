@@ -20,8 +20,8 @@ constexpr const ll INF = 1LL << 60;
 constexpr const ll inf = 1 << 30;
 constexpr const char rt = '\n';
 constexpr const char sp = ' ';
-#define rt(i, n) (i == (ll)(n) -1 ? rt : sp)
-#define len(x) ((ll)(x).size())
+#define rt(i, n) (i == (ll) (n) -1 ? rt : sp)
+#define len(x) ((ll) (x).size())
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define mp make_pair
@@ -34,7 +34,7 @@ constexpr const char sp = ' ';
 #define fi first
 #define se second
 #define uniq(x) (sort(all(x)), (x).erase(unique(all(x)), (x).end()))
-#define bis(x, y) ((ll)(lower_bound(all(x), y) - (x).begin()))
+#define bis(x, y) ((ll) (lower_bound(all(x), y) - (x).begin()))
 
 using graph = vector<vector<ll>>;
 template <class T> using wgraph = vector<vector<pair<ll, T>>>;
@@ -197,5 +197,3 @@ inline ll inv(const ll n, const ll m = MOD) {
 }
 
 #pragma endregion
-
-signed main() {}
