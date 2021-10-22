@@ -194,4 +194,23 @@ namespace slib {
         }
         return modulo(x, m);
     }
+
+    unsigned long long binary_gcd(unsigned long long x, unsigned long long y) {
+        if (!x | !y) return x | y;
+        unsigned long long cx = __builtin_ctzll(x), cy = __builtin_ctzll(y);
+        x >>= cx, y >>= cy;
+        while (x ^ y) {
+            if (x > y) {
+                x = (x - y) >> __builtin_ctzll(x ^ y);
+            } else {
+                y = (y - x) >> __builtin_ctzll(x ^ y);
+            }
+        }
+        return x << min(cx, cy);
+    }
+
+    inline long long binary_gcd(long long x, long long y) {
+        return binary_gcd((unsigned long long) (abs(x)), (unsigned long long) (abs(y)));
+    }
+
 } // namespace slib
