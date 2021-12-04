@@ -1,43 +1,42 @@
 struct CoefficientTree {
     static const ll n = 1 << 20;
-    using Type = ll;
-    Type unit = 0;
-    function<Type(Type, Type)> add = [](Type left, Type right) { return left + right; };
-    function<Type(Type, Type)> mul = [](Type left, Type right) { return left * right; };
-    function<Type(Type)> inv = [](Type x) { return -x; };
+    using Group = ll;
+    using Scalar = ll;
+    Group unitG = 0;
+    Scalar unitS = 1;
+    function<Group(Group, Group)> add = [](Group left, Group right) { return left + right; };
+    function<Group(Group)> inv = [](Group x) { return -x; };
+    function<Group(Scalar, Group)> mul = [](Scalar left, Group right) { return left * right; };
 
-    struct LatteTree {
-        vector<Type> node;
+    vector<Group> node;
+    vector<Group> s;
+    vector<Scalar> c;
 
-        LatteTree() : node(2 * n - 1, unit) {}
-        inline void combine(ll a, ll b, Type x, ll i = 0, ll l = 0, ll r = n) {
-            if (b <= l or r <= a) return;
-            if (a <= l and r <= b) {
-                node[i] = add(node[i], x);
-            } else {
-                combine(a, b, x, i * 2 + 1, l, (l + r) / 2);
-                combine(a, b, x, i * 2 + 2, (l + r) / 2, r);
-            }
+    CoefficientTree() : node(2 * n - 1, unitG), s(n, unitG), c(n, unitS) {}
+
+    inline void distribute(ll a, ll b, Group x, ll i = 0, ll l = 0, ll r = n) {
+        if (b <= l or r <= a) return;
+        if (a <= l and r <= b) {
+            node[i] = add(node[i], x);
+        } else {
+            distribute(a, b, x, i * 2 + 1, l, (l + r) / 2);
+            distribute(a, b, x, i * 2 + 2, (l + r) / 2, r);
         }
-        inline Type result(ll x) {
-            Type res = unit;
-            ll i = n - 1 + x;
-            while (i != 0) {
-                res = add(res, node[i]);
-                i = (i - 1) / 2;
-            }
-            return add(res, node[i]);
-        }
-    } tree;
-
-    vector<Type> s, a;
-    CoefficientTree() : s(n, unit), a(n, unit) {}
-    inline void change(ll x, ll k) {
-        Type sum = tree.result(x);
-        s[x] = add(s[x], mul(a[x], sum));
-        a[x] = k;
-        tree.combine(x, x + 1, inv(sum));
     }
-    inline void add(ll a, ll b, Type x) { tree.combine(a, b, x); }
-    inline Type get(ll x) { return add(s[x], mul(a[x], tree.result(x))); }
+    inline void update(ll a, Group x) { distribute(a, a + 1, add(inv(get(a)), x)); }
+    inline Group get(ll a) {
+        Group res = unitG;
+        ll i = n - 1 + a;
+        while (i != 0) {
+            res = add(res, node[i]);
+            i = (i - 1) / 2;
+        }
+        return add(s[a], mul(c[a], add(res, node[i])));
+    }
+    inline void change(ll a, Scalar x) {
+        Group sum = get(a);
+        s[a] = add(s[a], mul(c[a], sum));
+        c[a] = x;
+        distribute(a, a + 1, inv(sum));
+    }
 };
