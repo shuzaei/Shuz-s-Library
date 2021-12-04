@@ -213,4 +213,9 @@ namespace slib {
         return binary_gcd((unsigned long long) (abs(x)), (unsigned long long) (abs(y)));
     }
 
+#define codeforces                                                                                 \
+    ll testcases;                                                                                  \
+    cin >> testcases;                                                                              \
+    rep(testcase, testcases)
+#define gcj(s) cout << s << testcase + 1 << ": "
 } // namespace slib
