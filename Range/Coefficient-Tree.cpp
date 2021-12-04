@@ -35,8 +35,7 @@ struct CoefficientTree {
     }
     inline void change(ll a, Scalar x) {
         Group sum = get(a);
-        s[a] = add(s[a], mul(c[a], sum));
-        c[a] = x;
-        distribute(a, a + 1, inv(sum));
+        c[a] = 1, update(a, unitG);
+        c[a] = x, s[a] = add(s[a], mul(c[a], sum));
     }
 };
