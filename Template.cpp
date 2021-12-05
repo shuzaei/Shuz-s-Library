@@ -3,22 +3,23 @@ using namespace std;
 // #pragma GCC target("arch=skylake-avx512")
 // #include <atcoder/all>
 // using namespace atcoder;
+#define NDEBUG
 
-namespace slib {
-    // Define
-    using ll = long long;
-    using ull = unsigned long long;
-    using ld = long double;
-    template <class T> using pvector = vector<pair<T, T>>;
-    template <class T> using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
-    constexpr const ll dx[4] = {1, 0, -1, 0};
-    constexpr const ll dy[4] = {0, 1, 0, -1};
-    constexpr const ll MOD = 1e9 + 7;
-    constexpr const ll mod = 998244353;
-    constexpr const ll INF = 1LL << 60;
-    constexpr const ll inf = 1 << 30;
-    constexpr const char rt = '\n';
-    constexpr const char sp = ' ';
+#pragma region template
+// Define
+using ll = long long;
+using ull = unsigned long long;
+using ld = long double;
+template <class T> using pvector = vector<pair<T, T>>;
+template <class T> using rpriority_queue = priority_queue<T, vector<T>, greater<T>>;
+constexpr const ll dx[4] = {1, 0, -1, 0};
+constexpr const ll dy[4] = {0, 1, 0, -1};
+constexpr const ll MOD = 1e9 + 7;
+constexpr const ll mod = 998244353;
+constexpr const ll INF = 1LL << 60;
+constexpr const ll inf = 1 << 30;
+constexpr const char rt = '\n';
+constexpr const char sp = ' ';
 #define rt(i, n) (i == (ll) (n) -1 ? rt : sp)
 #define len(x) ((ll) (x).size())
 #define all(x) (x).begin(), (x).end()
@@ -35,44 +36,51 @@ namespace slib {
 #define uniq(x) (sort(all(x)), (x).erase(unique(all(x)), (x).end()))
 #define bis(x, y) ((ll) (lower_bound(all(x), y) - (x).begin()))
 
-    using graph = vector<vector<ll>>;
-    template <class T> using wgraph = vector<vector<pair<ll, T>>>;
-    bool __DIRECTED__ = true;
-    bool __ZERO_INDEXED__ = false;
-    istream &operator>>(istream &is, graph &g) {
-        ll a, b;
-        is >> a >> b;
-        if (__ZERO_INDEXED__ == false) a--, b--;
-        g[a].pb(b);
-        if (__DIRECTED__ == false) g[b].pb(a);
-        return is;
-    }
-    template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
-        ll a, b;
-        T c;
-        is >> a >> b >> c;
-        if (__ZERO_INDEXED__ == false) a--, b--;
-        g[a].pb({b, c});
-        if (__DIRECTED__ == false) g[b].pb({a, c});
-        return is;
-    }
+using graph = vector<vector<ll>>;
+template <class T> using wgraph = vector<vector<pair<ll, T>>>;
+bool __DIRECTED__ = true;
+bool __ZERO_INDEXED__ = false;
+istream &operator>>(istream &is, graph &g) {
+    ll a, b;
+    is >> a >> b;
+    if (__ZERO_INDEXED__ == false) a--, b--;
+    g[a].pb(b);
+    if (__DIRECTED__ == false) g[b].pb(a);
+    return is;
+}
+template <class T> istream &operator>>(istream &is, wgraph<T> &g) {
+    ll a, b;
+    T c;
+    is >> a >> b >> c;
+    if (__ZERO_INDEXED__ == false) a--, b--;
+    g[a].pb({b, c});
+    if (__DIRECTED__ == false) g[b].pb({a, c});
+    return is;
+}
 
-    template <class T> bool chmax(T &a, const T &b) {
-        if (a < b) {
-            a = b;
-            return 1;
-        }
-        return 0;
+template <class T> bool chmax(T &a, const T &b) {
+    if (a < b) {
+        a = b;
+        return 1;
     }
-    template <class T> bool chmin(T &a, const T &b) {
-        if (a > b) {
-            a = b;
-            return 1;
-        }
-        return 0;
+    return 0;
+}
+template <class T> bool chmin(T &a, const T &b) {
+    if (a > b) {
+        a = b;
+        return 1;
     }
+    return 0;
+}
 
 // Debug
+#ifdef NDEBUG
+#define debug(...)
+#define dumpi(a, h, w)
+#define vdumpi(a, n)
+#define dump(a, h, w)
+#define vdump(a, n)
+#else
 #define debug(...)                                                                                 \
     {                                                                                              \
         cerr << __LINE__ << ": " << #__VA_ARGS__ << " = ";                                         \
@@ -135,15 +143,16 @@ namespace slib {
         }                                                                                          \
         cerr << "]" << rt;                                                                         \
     }
+#endif
 
-    template <class S, class T> istream &operator>>(istream &is, pair<S, T> &p) {
-        is >> p.first >> p.second;
-        return is;
-    }
-    template <class S, class T> ostream &operator<<(ostream &os, const pair<S, T> &p) {
-        os << p.first << ' ' << p.second;
-        return os;
-    }
+template <class S, class T> istream &operator>>(istream &is, pair<S, T> &p) {
+    is >> p.first >> p.second;
+    return is;
+}
+template <class S, class T> ostream &operator<<(ostream &os, const pair<S, T> &p) {
+    os << p.first << ' ' << p.second;
+    return os;
+}
 
 // Loop
 #define inc(i, a, n) for (ll i = (a), _##i = (n); i <= _##i; ++i)
@@ -153,69 +162,69 @@ namespace slib {
 
 // Stream
 #define fout(n) cout << fixed << setprecision(n)
-    struct io {
-        io() { cin.tie(nullptr), ios::sync_with_stdio(false); }
-    } io;
+struct io {
+    io() { cin.tie(nullptr), ios::sync_with_stdio(false); }
+} io;
 
 // Speed
 #pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,tune=native")
 #pragma GCC optimize("Ofast,unroll-loops")
 
-    // Math
-    inline constexpr ll gcd(const ll a, const ll b) { return b ? gcd(b, a % b) : a; }
-    inline constexpr ll lcm(const ll a, const ll b) { return a / gcd(a, b) * b; }
+// Math
+inline constexpr ll gcd(const ll a, const ll b) { return b ? gcd(b, a % b) : a; }
+inline constexpr ll lcm(const ll a, const ll b) { return a / gcd(a, b) * b; }
 
-    inline ll modulo(const ll n, const ll m = MOD) {
-        ll k = n % m;
-        return k + m * (k < 0);
+inline constexpr ll modulo(const ll n, const ll m = MOD) {
+    ll k = n % m;
+    return k + m * (k < 0);
+}
+inline constexpr ll chmod(ll &n, const ll m = MOD) {
+    n %= m;
+    return n += m * (n < 0);
+}
+inline constexpr ll mpow(ll a, ll n, const ll m = MOD) {
+    ll r = 1;
+    rep(i, 64) {
+        if (n & (1LL << i)) r *= a;
+        chmod(r, m);
+        a *= a;
+        chmod(a, m);
     }
-    inline ll chmod(ll &n, const ll m = MOD) {
-        n %= m;
-        return n += m * (n < 0);
+    return r;
+}
+inline ll inv(const ll n, const ll m = MOD) {
+    ll a = n, b = m, x = 1, y = 0;
+    while (b) {
+        ll t = a / b;
+        a -= t * b;
+        swap(a, b);
+        x -= t * y;
+        swap(x, y);
     }
-    inline ll mpow(ll a, ll n, const ll m = MOD) {
-        ll r = 1;
-        rep(i, 64) {
-            if (n & (1LL << i)) r *= a;
-            chmod(r, m);
-            a *= a;
-            chmod(a, m);
+    return modulo(x, m);
+}
+unsigned long long binary_gcd(unsigned long long x, unsigned long long y) {
+    if (!x | !y) return x | y;
+    unsigned long long cx = __builtin_ctzll(x), cy = __builtin_ctzll(y);
+    x >>= cx, y >>= cy;
+    while (x ^ y) {
+        if (x > y) {
+            x = (x - y) >> __builtin_ctzll(x ^ y);
+        } else {
+            y = (y - x) >> __builtin_ctzll(x ^ y);
         }
-        return r;
     }
-    inline ll inv(const ll n, const ll m = MOD) {
-        ll a = n, b = m, x = 1, y = 0;
-        while (b) {
-            ll t = a / b;
-            a -= t * b;
-            swap(a, b);
-            x -= t * y;
-            swap(x, y);
-        }
-        return modulo(x, m);
-    }
+    return x << min(cx, cy);
+}
 
-    unsigned long long binary_gcd(unsigned long long x, unsigned long long y) {
-        if (!x | !y) return x | y;
-        unsigned long long cx = __builtin_ctzll(x), cy = __builtin_ctzll(y);
-        x >>= cx, y >>= cy;
-        while (x ^ y) {
-            if (x > y) {
-                x = (x - y) >> __builtin_ctzll(x ^ y);
-            } else {
-                y = (y - x) >> __builtin_ctzll(x ^ y);
-            }
-        }
-        return x << min(cx, cy);
-    }
-
-    inline long long binary_gcd(long long x, long long y) {
-        return binary_gcd((unsigned long long) (abs(x)), (unsigned long long) (abs(y)));
-    }
+inline long long binary_gcd(long long x, long long y) {
+    return binary_gcd((unsigned long long) (abs(x)), (unsigned long long) (abs(y)));
+}
 
 #define codeforces                                                                                 \
     ll testcases;                                                                                  \
     cin >> testcases;                                                                              \
     rep(testcase, testcases)
 #define gcj(s) cout << s << testcase + 1 << ": "
-} // namespace slib
+
+#pragma endregion
