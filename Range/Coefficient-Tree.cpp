@@ -23,7 +23,13 @@ struct CoefficientTree {
             distribute(a, b, x, i * 2 + 2, (l + r) / 2, r);
         }
     }
-    inline void update(ll a, Group x) { distribute(a, a + 1, add(inv(get(a)), x)); }
+    inline void update(ll a, Group x) {
+        Scalar tmp = c[a];
+        c[a] = 1;
+        Group sum = get(a);
+        c[a] = tmp;
+        distribute(a, a + 1, add(inv(sum), x));
+    }
     inline Group get(ll a) {
         Group res = unitG;
         ll i = n - 1 + a;
@@ -35,7 +41,8 @@ struct CoefficientTree {
     }
     inline void change(ll a, Scalar x) {
         Group sum = get(a);
-        c[a] = 1, update(a, unitG);
-        c[a] = x, s[a] = add(s[a], mul(c[a], sum));
+        update(a, unitG);
+        c[a] = x;
+        s[a] = add(s[a], mul(c[a], sum));
     }
 };
