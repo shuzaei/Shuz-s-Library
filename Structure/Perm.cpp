@@ -16,7 +16,7 @@ Perm mul(Perm a, Perm b) {
     return c;
 }
 Perm pow(Perm a, ll n) {
-    if (!n) return e(n);
+    if (!n) return e(len(a));
     Perm b = pow(a, n >> 1);
     b = mul(b, b);
     if (n & 1) b = mul(b, a);
