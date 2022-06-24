@@ -124,6 +124,16 @@ namespace Kika {
         return s1.p1 + (s1.p2 - s1.p1) * t;
     }
     bool intersect(Circle c, Line l) { return distanceLP(l, c.c) <= c.r; }
+    /*
+    壊れています．
+    >   d < rL - rS 小さい円が内部にある。
+    >   d = rL - rS 小さい円が内接している。
+    >   rL - rS < d < rL + rS 2点で交わっている。
+    >   d = rL + rS 外接している。
+    >   d > rL + rS 小さい円が外部にある。
+    >
+    >   by ruthen71
+    */
     bool intersect(Circle c1, Circle c2) { return distance(c1.c, c2.c) <= c1.r + c2.r; }
     pair<Point, Point> crossPoints(Circle c, Line l) {
         assert(intersect(c, l));
